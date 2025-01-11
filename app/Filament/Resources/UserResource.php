@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
+use Spatie\Permission\Models\Role;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Forms\Components\TextInput;
@@ -20,7 +21,7 @@ class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-users';
 
     public static function form(Form $form): Form
     {
@@ -30,16 +31,8 @@ class UserResource extends Resource
                 TextInput::make('name')->required(),
                 TextInput::make('email')->email()->required(),
                 TextInput::make('phone')->tel()->required()->maxLength(13),
-                TextInput::make('password')->password()->required(),
-                Select::make('role')->options([
-
-                    '1' => 'Pastor',
-                    '2' => 'Deacon',
-                    '3' => 'Trustee',
-                    
-                ]),
-                
-
+                TextInput::make('password')->password()->visibleOn('create')->required(),
+                Select::make('role')->options(Role::all()->pluck('name','name'))->required(),
             ]);
     }
 
@@ -50,6 +43,7 @@ class UserResource extends Resource
                 TextColumn::make('id'),
                 TextColumn::make('name'),
                 TextColumn::make('email'),
+                TextColumn::make('phone'),
             ])
             ->filters([
                 //
