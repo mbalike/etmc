@@ -28,8 +28,15 @@ class UserResource extends Resource
 
                 TextInput::make('name')->required(),
                 TextInput::make('email')->email()->required(),
-                TextInput::make('phone')->phone()->required(),
+                TextInput::make('phone')->tel()->required()->maxLength(13),
                 TextInput::make('password')->password()->required(),
+                Select::make('role')->options([
+
+                    '1' => 'Pastor',
+                    '2' => 'Deacon',
+                    '3' => 'Trustee',
+                    
+                ]),
                 
 
             ]);
