@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('families', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->text('address')->nullable();
-            $table->timestamps();
-            $table->softDeletes();
+        Schema::table('families', function (Blueprint $table) {
+            $table->foreignId('family_head')->constrained('members')->after('name');
         });
     }
 
@@ -25,6 +21,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('families');
+        Schema::table('families', function (Blueprint $table) {
+            $table->dropForeign(['head_id']);
+            $table->dropColumn('head_id');
+        });
     }
 };

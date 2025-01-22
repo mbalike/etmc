@@ -7,8 +7,12 @@ use App\Filament\Resources\MemberResource\RelationManagers;
 use App\Models\Member;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Select;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -23,7 +27,24 @@ class MemberResource extends Resource
     {
         return $form
             ->schema([
-                //
+                TextInput::make(('first_name'))->required(),
+                TextInput::make(('last_name'))->required(),
+                TextInput::make(('email'))->required(),
+                TextInput::make(('phone'))->required(),
+                Select::make('gender')->label('Gender')->options([
+                    'male'   => 'Male',
+                    'female' => 'Female',
+                ]),
+                Select::make('marital_status')->label('Marital Status')->options([
+                    'single'   => 'Single',
+                    'married' => 'Married',
+                    'widowed' => 'Widowed',
+                ]),
+                DatePicker::make('birthdate')->label('Birthdate')->required(),
+                TextInput::make(('spouse_id')),
+                TextInput::make(('family_id')),
+                TextInput::make(('supervisor_id'))->required(),
+                
             ]);
     }
 
@@ -31,7 +52,17 @@ class MemberResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make(('id')),
+                TextColumn::make(('first_name')),
+                TextColumn::make(('last_name')),
+                TextColumn::make(('email')),
+                TextColumn::make(('phone')),
+                TextColumn::make(('birthdate')),
+                TextColumn::make(('gender')),
+                TextColumn::make(('marital_status')),
+                TextColumn::make(('spouse_id')),
+                TextColumn::make(('family_id')),
+                TextColumn::make(('supervisor_id')),
             ])
             ->filters([
                 //

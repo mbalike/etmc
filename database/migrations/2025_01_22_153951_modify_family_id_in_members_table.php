@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('families', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->text('address')->nullable();
-            $table->timestamps();
-            $table->softDeletes();
+        Schema::table('members', function (Blueprint $table) {
+            $table->unsignedBigInteger('family_id')->nullable()->change();
         });
     }
 
@@ -25,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('families');
+        Schema::table('members', function (Blueprint $table) {
+            $table->unsignedBigInteger('family_id')->nullable(false)->change();
+        });
     }
 };
