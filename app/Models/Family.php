@@ -15,12 +15,12 @@ class Family extends Model
     protected $fillable = [
         'name',
         'address',
-        'head_id'
+        'family_head'
     ];
 
     public function head(): BelongsTo
     {
-        return $this->belongsTo(Member::class, 'head_id');
+        return $this->belongsTo(Member::class, 'family_head');
     }
 
     public function members(): HasMany
