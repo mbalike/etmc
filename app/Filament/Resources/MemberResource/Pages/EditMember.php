@@ -17,4 +17,20 @@ class EditMember extends EditRecord
             Actions\DeleteAction::make(),
         ];
     }
+
+    protected function mutateFormDataBeforeSave(array $data): array
+    {
+        try {
+            // Your logic to update the member
+        } catch (QueryException $e) {
+            if ($e->getCode() == 23000) {
+                // Handle the foreign key constraint violation
+                $this->notify('danger', 'Cannot update the member. Please ensure the supervisor exists.');
+            } else {
+                throw $e;
+            }
+        }
+
+        return $data;
+    }
 }
