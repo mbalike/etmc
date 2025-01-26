@@ -58,4 +58,14 @@ class Member extends Model
     {
         return "{$this->first_name} {$this->last_name}";
     }
+
+    public function motherOf(): HasMany
+    {
+        return $this->HasMany(Teenager::class);
+    }
+
+    public function fatherOf(): HasMany
+    {
+        return $this->HasMany(Teenager::class);
+    }
 }

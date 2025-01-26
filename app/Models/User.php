@@ -46,4 +46,16 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function supervisedMembers(): HasMany
+    {
+        return $this->HasMany(Member::class, 'supervisor_id');
+
+    }
+
+    public function supervisedTeens(): HasMany
+    {
+        return $this->HasMany(Teenager::class, 'supervisor_id');
+    }
+
 }
