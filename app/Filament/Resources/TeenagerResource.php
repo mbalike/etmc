@@ -9,6 +9,7 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -31,7 +32,14 @@ class TeenagerResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('id'),
+                TextColumn::make('first_name'),
+                TextColumn::make('last_name'),
+                TextColumn::make('gender'),
+                TextColumn::make('birthdate'),
+                TextColumn::make('father_id'),
+                TextColumn::make('mother_id'),
+                TextColumn::make('suoervisor_id'),
             ])
             ->filters([
                 //
