@@ -39,7 +39,7 @@ class TeenagerResource extends Resource
                 TextColumn::make('birthdate'),
                 TextColumn::make('father_id'),
                 TextColumn::make('mother_id'),
-                TextColumn::make('suoervisor_id'),
+                TextColumn::make('supervisor_id'),
             ])
             ->filters([
                 //
