@@ -61,11 +61,11 @@ class Member extends Model
 
     public function motherOf(): HasMany
     {
-        return $this->HasMany(Teenager::class);
+        return $this->HasMany(Teenager::class, 'mother_id');
     }
 
     public function fatherOf(): HasMany
     {
-        return $this->HasMany(Teenager::class);
+        return $this->HasMany(Teenager::class, 'father_id');
     }
 }
