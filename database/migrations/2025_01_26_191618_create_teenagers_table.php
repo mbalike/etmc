@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('teenagers', function (Blueprint $table) {
             $table->id();
+            $table->text('first_name');
+            $table->text('last_name');
+            $table->enum('gender',['male','female']);
+            $table->date('birthdate');
+            $table->foreignId('father_id')->nullable()->constrained('members');
+            $table->foreignId('mother_id')->nullable()->constrained('members');
+            $table->foreignId('supervisor_id')->constrained('users');
             $table->timestamps();
         });
     }
