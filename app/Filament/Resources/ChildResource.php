@@ -23,7 +23,19 @@ class ChildResource extends Resource
     {
         return $form
             ->schema([
-                //
+                TextInput::make('first_name')->required(),
+                TextInput::make('last_name')->required(),
+                TextInput::make('last_name')->required(),
+                Select::make('gender')->label('Gender')->options([
+                        'male'   => 'Male',
+                        'female' => 'Female',
+                    
+                ])->required(),
+                DatePicker::make('birthdate')->label('birthdate')->required(),
+                Select::make('father_id')->label('Father')->options(Member::where('gender', 'male')->pluck('last_name','id')),
+                Select::make('mother_id')->label('Mother')->options(Member::where('gender', 'female')->pluck('last_name', 'id')),
+                Select::make('supervisor_id')->label('SuperVisor')->options(User::all()->pluck('name','id')),
+            ]);
             ]);
     }
 
