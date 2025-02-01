@@ -8,6 +8,9 @@ use App\Models\Child;
 use App\Models\Member;
 use App\Models\User;
 use Filament\Forms;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -38,7 +41,7 @@ class ChildResource extends Resource
                 Select::make('mother_id')->label('Mother')->options(Member::where('gender', 'female')->pluck('last_name', 'id')),
                 Select::make('supervisor_id')->label('SuperVisor')->options(User::all()->pluck('name','id')),
             ]);
-            ]);
+            
     }
 
     public static function table(Table $table): Table
