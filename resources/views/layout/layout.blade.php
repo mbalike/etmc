@@ -35,11 +35,12 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  @livewireStyles
 </head>
 
 <body>
 
-@include('layout.header')  
+@include('layout.header') < 
 @include('layout.nav')
  <!-- #main -->
 <main id="main" class="main">
@@ -71,7 +72,7 @@
   <!-- Template Main JS File -->
   <script src="{{asset('assets/js/main.js')}}"></script>
 
-
+@livewireScripts
 </body>
 
 </html>

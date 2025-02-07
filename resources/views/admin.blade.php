@@ -164,33 +164,8 @@
                 <div class="card-body">
                   <h5 class="card-title">Users <span>| Today</span></h5>
 
-                  <table class="table table-borderless datatable">
-                    <thead>
-                      <tr>
-                        <th scope="col">s/n</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Role</th>
-                        <th scope="col">email</th>
-                      
-                        <th scope="col">Actions</th>
-                        
-                      </tr>
-                    </thead>
-                    <tbody>
-                    
-                    <tr>
-                        <td></td>
-                        <td><a href="#" data-bs-toggle="modal" data-bs-target=""></a></td>
-                        <td></td>
-                        <td></td>
-                          
-                        <td><a  href="" class="btn btn-primary">Edit</a></td>
-                      
-                      </tr>
-                      
-                     
-                    </tbody>
-                  </table>
+                  <livewire:member-list />
+
 
                 </div>
 
