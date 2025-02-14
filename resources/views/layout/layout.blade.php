@@ -40,7 +40,7 @@
 
 <body>
 
-@include('layout.header') < 
+@include('layout.header')  
 @include('layout.nav')
  <!-- #main -->
 <main id="main" class="main">
