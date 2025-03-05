@@ -1,9 +1,13 @@
 
 <div class="container mt-4">
     <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Search Members" wire:model="search">
+       
+        
+        <input type="text" wire:model.live.debounce.500ms="search" placeholder="Search Members...">
+        
     </div>
-
+    
+    <div wire:ignore.self>
     <table class="table table-striped table-bordered">
         <thead class="table">
             <tr>
@@ -32,4 +36,9 @@
             @endforelse
         </tbody>
     </table>
+    
+</div>
+<div class="d-flex justify-content-center">
+        {{ $members->links('livewire.custom-pagination') }}
+    </div>
 </div>

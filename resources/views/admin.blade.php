@@ -164,7 +164,7 @@
                 <div class="card-body">
                   <h5 class="card-title">Users <span>| Today</span></h5>
 
-                  <livewire:member-list />
+                  <livewire:test-component />
 
 
                 </div>
