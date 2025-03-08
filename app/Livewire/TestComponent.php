@@ -119,4 +119,30 @@ private function resetForm()
     $this->email = '';
     $this->gender = '';
 }
+
+// Add these properties to your MembersTable class
+public $isDeleteModalOpen = false;
+
+// Add these methods
+public function openDeleteModal($memberId)
+{
+    $this->selectedMember = Member::find($memberId);
+    $this->memberId = $this->selectedMember->id;
+    $this->isDeleteModalOpen = true;
+}
+
+public function closeDeleteModal()
+{
+    $this->isDeleteModalOpen = false;
+    $this->resetForm();
+}
+
+public function delete()
+{
+    $member = Member::find($this->memberId);
+    $member->delete();
+    
+    $this->closeDeleteModal();
+    $this->dispatch('memberDeleted'); // Event for notification
+}
 }
