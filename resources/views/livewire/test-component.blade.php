@@ -7,8 +7,8 @@
         
     </div>
     
-    <div wire:ignore.self>
-    <table class="table table-striped table-bordered">
+    <div >
+    <table class="table table-striped ">
         <thead class="table">
             <tr>
                 <th>Name</th>
@@ -19,7 +19,7 @@
                 <th>Marital Status</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody wire:poll.20s>
             @forelse($members as $member)
                 <tr>
                     <td>{{ $member->first_name }} {{ $member->last_name }}</td>
@@ -28,6 +28,14 @@
                     <td>{{ $member->gender }}</td>
                     <td>{{ $member->birthdate }}</td>
                     <td>{{ $member->marital_status }}</td>
+                    <td>
+                      <button wire:click="openUpdateModal({{ $member->id }})" class="btn btn-sm btn-primary">
+                          Edit
+                      </button>
+                      <button wire:click="openDeleteModal({{ $member->id }})" class="btn btn-sm btn-danger">
+                          Delete
+                      </button>
+                    </td>
                 </tr>
             @empty
                 <tr>
@@ -36,9 +44,55 @@
             @endforelse
         </tbody>
     </table>
+    <div>
+    @if(session()->has('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
+    @endif
+</div>
     
 </div>
 <div class="d-flex justify-content-center">
         {{ $members->links('livewire.custom-pagination') }}
     </div>
+    <!-- Update the action buttons in your table -->
+
+
+<!-- Add at the end of your view -->
+<!-- Update Modal -->
+@if($isUpdateModalOpen)
+<div class="modal fade show" tabindex="-1" style="display: block; background-color: rgba(0,0,0,0.5);">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Update Member</h5>
+                <button type="button" class="btn-close" wire:click="closeUpdateModal"></button>
+            </div>
+            <div class="modal-body">
+                <form wire:submit.prevent="update">
+                    <div class="mb-3">
+                        <label class="form-label">First Name</label>
+                        <input type="text" wire:model="firstName" class="form-control">
+                        @error('firstName') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Last Name</label>
+                        <input type="text" wire:model="lastName" class="form-control">
+                        @error('lastName') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <!-- Add other form fields -->
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" wire:click="closeUpdateModal">Cancel</button>
+                <button type="button" class="btn btn-primary" wire:click="update">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+@endif
+
+<!-- Delete Modal -->
+
 </div>
