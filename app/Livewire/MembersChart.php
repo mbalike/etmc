@@ -10,7 +10,7 @@ class MembersChart extends Component
 
     public $chartData = [];
 
-    public function updateChart(){
+    public function mount(){
 
         $this->chartData = [
 
@@ -18,8 +18,6 @@ class MembersChart extends Component
             ['name' => 'Female', 'value' => Member::where('gender', 'female')->count()],
 
         ];
-
-        $this->emit('chartUpdated',$this->chartData);
     }
 
 
