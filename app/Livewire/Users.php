@@ -47,5 +47,65 @@ class Users extends Component
         return view('livewire.users', ['users' => $users]);
     }
 
-    public
+    public $selectedUser = null;
+    public $isUpdateModalOpen = false;
+
+    //Form properties
+
+    public $userId;
+    public $name;
+    public $phone;
+    public $email;
+
+    public function openUpdateModal($userId){
+            
+        $this->selectedUser = User::find($userId);
+
+        $this->userId = $this->selectedUser->id;
+        $this->name   = $this->selectedUser->name;
+        $this->phone  = $this->selectedUser->phone;
+        $this->email  = $this->selectedUser->email;
+
+        $this->isUpdateModalOpen = true;
+    }
+
+    public function closeUpdateModal(){
+
+        $this->isUpdateModalOpen = false;
+        $this->resetForm();
+    }
+
+    public function update(){
+
+        $this->validate([
+
+            'name'   => 'required|string|max:255',
+            'phone'  => 'required|string|max:14',
+            'email'  => 'required|email|max:255',
+
+        ]);
+
+        $user = User::find($userId);
+        $user->update([
+
+            'name'  => $this->name,
+            'phone' => $this->phone,
+            'email' => $this->email,
+ 
+        ]);
+
+        $this->closeUpdateModal();
+        $this->dispach('userUpdated');
+    }
+
+    private function resetForm()
+    {
+
+        $this->selectedUser = null;
+        $this->userId = null;
+        $this->name = '';        
+        $this->phone = '';
+        $this->email = '';
+        
+    }
 }
