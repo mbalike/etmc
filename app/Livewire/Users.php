@@ -30,7 +30,7 @@ class Users extends Component
 
     public function render()
     {
-        $query = Member::query();
+        $query = User::query();
 
            if(!empty($this->search)){
 
@@ -46,4 +46,6 @@ class Users extends Component
 
         return view('livewire.users', ['users' => $users]);
     }
+
+    public
 }

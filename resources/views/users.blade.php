@@ -281,7 +281,8 @@
           
                           <div class="card-body">
                             <h5 class="card-title">Users<span> </span></h5>
-          
+                            
+                            <livewire:users />
                            
           
                           </div>

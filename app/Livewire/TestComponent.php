@@ -90,13 +90,82 @@ public function update()
     $this->validate([
         'firstName' => 'required|string|max:255',
         'lastName' => 'required|string|max:255',
-        // 'phone' => 'required|string|max:20',
-        // 'email' => 'required|email|max:255',
-        // 'gender' => 'required|in:Male,Female',
+        'phone' => 'required|string|max:20',
+        'email' => 'required|email|max:255',
+        'gender' => 'required|in:Male,Female',
     ]);
     
     // Update member
-    $member = Member::find($this->memberId);
+    $member = Member::find($this->memberId); // Add these properties to your MembersTable class
+    public $selectedMember = null;
+    public $isUpdateModalOpen = false;
+    
+    // Form properties
+    public $memberId;
+    public $firstName;
+    public $lastName;
+    public $phone;
+    public $email;
+    public $gender;
+    
+    // Add these methods
+    public function openUpdateModal($memberId)
+    {
+        $this->selectedMember = Member::find($memberId);
+        
+        // Populate form fields
+        $this->memberId = $this->selectedMember->id;
+        $this->firstName = $this->selectedMember->first_name;
+        $this->lastName = $this->selectedMember->last_name;
+        $this->phone = $this->selectedMember->phone;
+        $this->email = $this->selectedMember->email;
+        $this->gender = $this->selectedMember->gender;
+        
+        $this->isUpdateModalOpen = true;
+    }
+    
+    public function closeUpdateModal()
+    {
+        $this->isUpdateModalOpen = false;
+        $this->resetForm();
+    }
+    
+    public function update()
+    {
+        // Validate form data
+        $this->validate([
+            'firstName' => 'required|string|max:255',
+            'lastName' => 'required|string|max:255',
+            'phone' => 'required|string|max:20',
+            'email' => 'required|email|max:255',
+            'gender' => 'required|in:Male,Female',
+        ]);
+        
+        // Update member
+        $member = Member::find($this->memberId);
+        $member->update([
+            'first_name' => $this->firstName,
+            'last_name' => $this->lastName,
+            'phone' => $this->phone,
+            'email' => $this->email,
+            'gender' => $this->gender,
+        ]);
+        
+        $this->closeUpdateModal();
+        $this->dispatch('memberUpdated'); // Event for notification
+    }
+    
+    private function resetForm()
+    {
+        $this->selectedMember = null;
+        $this->memberId = null;
+        $this->firstName = '';
+        $this->lastName = '';
+        $this->phone = '';
+        $this->email = '';
+        $this->gender = '';
+    }
+    
     $member->update([
         'first_name' => $this->firstName,
         'last_name' => $this->lastName,
