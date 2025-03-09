@@ -127,7 +127,7 @@
         </a>
       </li>
       <li>
-        <a href="">
+        <a href="{{route('users-table')}}">
           <i class="bi bi-circle"></i><span>Users</span>
         </a>
       </li>

@@ -7,6 +7,10 @@ Route::view('/', 'welcome');
 Route::view('/admini', 'admin')
      ->middleware(['auth']);
 
+Route::view('/users', 'users')
+     ->middleware(['auth'])
+     ->name('users-table');    
+
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');

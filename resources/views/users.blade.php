@@ -68,7 +68,7 @@
 
                               </div>
                               <div class="ps-3">
-                                <h6>{{$total}}</h6>
+                                <h6></h6>
                                
           
                               </div>
@@ -104,7 +104,7 @@
 
                               </div>
                               <div class="ps-3">
-                                <h6>{{}}</h6>
+                                <h6></h6>
                                 
                               </div>
                             </div>
@@ -302,7 +302,7 @@
             <div class="tab-pane fade profile-edit pt-3" id="user-create">
 
               <!-- Profile Edit Form -->
-              <form action="{{ route('add-user') }}" method="post">
+              <form action="" method="post">
                 @csrf
                   
                   
@@ -320,9 +320,9 @@
                   <div class="col-md-8 col-lg-9">
                     <select name="role_id" class="form-select" id="role">
                         <option value="" disabled>Pick Role</option>
-                        @foreach($roles as $role)
-                       <option value="{{$role->id}}">{{$role->name}}</option>
-                        @endforeach
+                        
+                       <option value=""></option>
+                        
                     </select>
                   </div>
                 </div>
@@ -355,9 +355,9 @@
                   <div class="col-md-8 col-lg-9">
                     <select name="role" class="form-select" id="role">
                         <option value="" disabled>Pick Role</option>
-                        @foreach($roles as $role)
-                       <option value="{{$role->id}}">{{$role->name}}</option>
-                        @endforeach
+                        
+                       <option value="</option>
+                        
                     </select>
                   </div>
                 </div>
@@ -422,9 +422,9 @@
                     <div class="mb-3">
                         <label for="userRole" class="form-label">Role</label>
                         <select class="form-select" id="userRole" name="role_id">
-                            @foreach($roles as $role)
-                                <option value="{{ $role->id }}">{{ $role->name }}</option>
-                            @endforeach
+                            
+                                <option value=""></option>
+                            
                         </select>
                     </div>
 
