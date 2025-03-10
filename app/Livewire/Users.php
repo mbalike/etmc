@@ -5,6 +5,7 @@ namespace App\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class Users extends Component
 {
@@ -56,6 +57,34 @@ class Users extends Component
     public $name;
     public $phone;
     public $email;
+    // public $users;
+
+      protected $rules = [
+
+        'name' => 'required|min:3',
+        'email' => 'required|email|unique:users',
+        'phone' => 'required'
+
+      ];
+
+      public function addUser()
+    {
+        $this->validate();
+
+        User::create([
+            'name' => $this->name,
+            'email' => $this->email,
+            'phone' => $this->phone,
+            'password' => Hash::make('default_password') 
+        ]);
+
+
+        $this->reset(['name', 'email', 'phone']);
+
+        session()->flash('message', 'User successfully added.');
+
+        $this->emit('userAdded');
+    }
 
     public function openUpdateModal($userId){
             

@@ -28,6 +28,9 @@
                       <button wire:click="openUpdateModal({{ $user->id }})" class="btn btn-sm btn-primary">
                           Edit
                       </button>
+                      <button wire:click="openDeleteModal({{ $user->id }})" class="btn btn-sm btn-danger ">
+                          Delete
+                      </button>
                       
                     </td>
                     

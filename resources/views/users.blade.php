@@ -301,37 +301,48 @@
             </div>
 
             <div class="tab-pane fade profile-edit pt-3" id="user-create">
+                 
 
               <!-- Profile Edit Form -->
-              <form action="" method="post">
+              <form wire:submit.prevent="addUser">
                 @csrf
                   
                   
                   <div class="row mb-3">
-                    <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
+                    <label for="Email" class="col-md-4 col-lg-3 col-form-label">Name</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="email" type="email" class="form-control" id="Email" value="">
+                      <input wire:model.defer="name" type="text" class="form-control" id="Name" value="">
+                       @error('name') <span class="text danger"> {{$message}} </span> @enderror
                     </div>
                   </div>
 
-                
-
-                <div class="row mb-3">
-                  <label for="company" class="col-md-4 col-lg-3 col-form-label">Role</label>
-                  <div class="col-md-8 col-lg-9">
-                    <select name="role_id" class="form-select" id="role">
-                        <option value="" disabled>Pick Role</option>
-                        
-                       <option value=""></option>
-                        
-                    </select>
+                  <div class="row mb-3">
+                    <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input wire:model.defer="email" type="email" class="form-control" id="Email" value="">
+                       @error('email')<span class="text-danger"> {{ $message }} </span> @enderror
+                    </div>
                   </div>
-                </div>
 
+                  <div class="row mb-3">
+                    <label for="Email" class="col-md-4 col-lg-3 col-form-label">Phone</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input wire:model.defer="phone" type="text" class="form-control" id="Phone" value="">
+                       @error('phone') <span class="text-danger"> {{$message}} </span> @enderror
+                    </div>
+                  </div>
 
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary">Save Changes</button>
+                  <button type="submit" class="btn btn-primary">
+                     <span wire:loading.remove wire:target="addUser">Add User</span>
+                     <span wire:loading wire:target="addUser">Adding...</span>
+                  </button>
                 </div>
+                @if (session()->has('message'))
+                 <div class="alert alert-success mt-3">
+                   {{ session('message') }}
+                 </div>
+                @endif
               </form><!-- End Create UserForm -->
 
             </div>
@@ -339,37 +350,7 @@
             <div class="tab-pane fade pt-3" id="user-edit">
 
               
-                            <!-- User Edit Form -->
-                            <form>
-                  
-                  <div class="row mb-3">
-                    <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input name="email" type="email" class="form-control" id="Email" value="">
-                    </div>
-                  </div>
-
-            
-
-                <div class="row mb-3">
-                  <label for="company" class="col-md-4 col-lg-3 col-form-label">Role</label>
-                  <div class="col-md-8 col-lg-9">
-                    <select name="role" class="form-select" id="role">
-                        <option value="" disabled>Pick Role</option>
-                        
-                       <option value="</option>
-                        
-                    </select>
-                  </div>
-                </div>
-
-
-                <div class="text-center">
-                  <button type="submit" class="btn btn-primary">Save Changes</button>
-                </div>
-              </form><!-- End User Edit Form -->
-
-            </div>
+                           
 
             <div class="tab-pane fade pt-3" id="profile-change-password">
               <!-- Change Password Form -->
@@ -397,43 +378,19 @@
 
 </main><!-- End #main -->
 
-<!-- Edit User Modal -->
-<div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="editUserModalLabel">Edit User</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="editUserForm" method="POST">
-                    @csrf
-                    @method('PUT')
-                    
-                    <div class="mb-3">
-                        <label for="userName" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="userName" name="name">
-                    </div>
 
-                    <div class="mb-3">
-                        <label for="userEmail" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="userEmail" name="email">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="userRole" class="form-label">Role</label>
-                        <select class="form-select" id="userRole" name="role_id">
-                            
-                                <option value=""></option>
-                            
-                        </select>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary">Save Changes</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 
 @endsection
+
+
+                <!-- <div class="row mb-3">
+                  <label for="company" class="col-md-4 col-lg-3 col-form-label">Role</label>
+                  <div class="col-md-8 col-lg-9">
+                    <select name="role_id" class="form-select" id="role">
+                        <option value="" disabled>Pick Role</option>
+                        
+                       <option value=""></option>
+                        
+                    </select>
+                  </div>
+                </div> -->

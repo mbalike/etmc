@@ -171,7 +171,44 @@
 
               </div>
             </div><!-- End Users Table -->
-            
+            <!-- Edit User Modal -->
+<!-- <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editUserModalLabel">Edit User</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editUserForm" method="POST">
+                    @csrf
+                    @method('PUT')
+                    
+                    <div class="mb-3">
+                        <label for="userName" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="userName" name="name">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="userEmail" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="userEmail" name="email">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="userRole" class="form-label">Role</label>
+                        <select class="form-select" id="userRole" name="role_id">
+                            
+                                <option value=""></option>
+                            
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Sav Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> -->
 
             <!-- Members -->
             <div class="col-12">
