@@ -85,7 +85,7 @@ class Users extends Component
 
         ]);
 
-        $user = User::find($userId);
+        $user = User::find($this->userId);
         $user->update([
 
             'name'  => $this->name,
@@ -95,7 +95,7 @@ class Users extends Component
         ]);
 
         $this->closeUpdateModal();
-        $this->dispach('userUpdated');
+        // $this->dispach('userUpdated');
     }
 
     private function resetForm()
@@ -107,5 +107,29 @@ class Users extends Component
         $this->phone = '';
         $this->email = '';
         
+    }
+
+    public $isDeleteModalOpen = false;
+
+    public function openDeleteModal($userId){
+
+        $this->selectedUser = User::find($userId);
+        $this->userId = $this->selectedUser->id;
+        $this->isDeleteModalOpen = true;
+
+    }
+
+    public function closeDeleteModal(){
+
+        $this->isDeleteModalOpen = false;
+        $this->resetForm();
+    }
+
+    public function delete(){
+
+        $user = User::find($this->userId);
+        $user->delete();
+
+        $this->closeDeleteModal;
     }
 }

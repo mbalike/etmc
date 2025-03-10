@@ -17,6 +17,7 @@
                 <th>Gender</th>
                 <th>Birthdate</th>
                 <th>Marital Status</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody wire:poll.20s>
@@ -29,10 +30,10 @@
                     <td>{{ $member->birthdate }}</td>
                     <td>{{ $member->marital_status }}</td>
                     <td>
-                      <button wire:click="openUpdateModal({{ $member->id }})" class="btn btn-sm btn-primary">
+                      <button wire:click="openUpdateModal({{ $member->id }})" class="btn btn-sm btn-primary ">
                           Edit
                       </button>
-                      <button wire:click="openDeleteModal({{ $member->id }})" class="btn btn-sm btn-danger">
+                      <button wire:click="openDeleteModal({{ $member->id }})" class="btn btn-sm btn-danger ">
                           Delete
                       </button>
                     </td>
@@ -59,7 +60,7 @@
     <!-- Update the action buttons in your table -->
 
 
-<!-- Add at the end of your view -->
+
 <!-- Update Modal -->
 @if($isUpdateModalOpen)
 <div class="modal fade show" tabindex="-1" style="display: block; background-color: rgba(0,0,0,0.5);">
