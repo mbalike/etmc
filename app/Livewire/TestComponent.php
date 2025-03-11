@@ -143,6 +143,6 @@ public function delete()
     $member->delete();
     
     $this->closeDeleteModal();
-    $this->dispatch('memberDeleted'); // Event for notification
+    $this->dispatch('memberDeleted'); 
 }
 }
