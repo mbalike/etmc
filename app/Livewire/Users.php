@@ -5,6 +5,7 @@ namespace App\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Support\Facades\Hash;
 
 class Users extends Component
@@ -44,8 +45,9 @@ class Users extends Component
            } 
 
            $users = $query->paginate(5);
+           $roles = Role::all();
 
-        return view('livewire.users', ['users' => $users]);
+        return view('livewire.users', ['users' => $users, 'roles' => $roles]);
     }
 
     public $selectedUser = null;
@@ -57,6 +59,7 @@ class Users extends Component
     public $name;
     public $phone;
     public $email;
+    public $roleId;
     
 
     public function openUpdateModal($userId){
@@ -67,6 +70,7 @@ class Users extends Component
         $this->name   = $this->selectedUser->name;
         $this->phone  = $this->selectedUser->phone;
         $this->email  = $this->selectedUser->email;
+        $this->roleId = $this->selectedUser->role_id;
 
         $this->isUpdateModalOpen = true;
     }
@@ -84,6 +88,7 @@ class Users extends Component
             'name'   => 'required|string|max:255',
             'phone'  => 'required|string|max:14',
             'email'  => 'required|email|max:255',
+            'roleId' => 'required|exists:roles,id',
 
         ]);
 
@@ -93,6 +98,7 @@ class Users extends Component
             'name'  => $this->name,
             'phone' => $this->phone,
             'email' => $this->email,
+            'role_id' => $this->roleId,
  
         ]);
 
@@ -108,6 +114,7 @@ class Users extends Component
         $this->name = '';        
         $this->phone = '';
         $this->email = '';
+        $this->roleId = '';
         
     }
 

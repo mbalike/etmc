@@ -14,6 +14,7 @@
                 <th>Name</th>
                 <th>Phone</th>
                 <th>Email</th>
+                <th>Role</th>
                 <th>Action</th>
                 
             </tr>
@@ -24,6 +25,7 @@
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->phone }}</td>
                     <td>{{ $user->email }}</td>
+                    <td>{{ $user->role->name }}</td>
                     <td>
                       <button wire:click="openUpdateModal({{ $user->id }})" class="btn btn-sm btn-primary">
                           Edit
@@ -81,6 +83,16 @@
                         <input type="email" wire:model="email" class="form-control">
                         @error('email') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
+                    <div class="mb-4">
+                            <label for="roleId" class="block text-gray-700 text-sm font-bold mb-2">Role</label>
+                            <select wire:model="roleId" id="roleId" class=" appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                <option value="">Select Role</option>
+                                @foreach($roles as $role)
+                                    <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('roleId') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                        </div>
                     <!-- Add other form fields -->
                 </form>
             </div>

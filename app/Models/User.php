@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
@@ -20,6 +21,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'role_id',
         'email',
         'phone',
         'password',
@@ -57,6 +59,11 @@ class User extends Authenticatable
     public function supervisedTeens(): HasMany
     {
         return $this->HasMany(Teenager::class, 'supervisor_id');
+    }
+
+    public function role(): BelongsTo
+    {
+        return $this->BelongsTo(Role::class);
     }
 
 }
