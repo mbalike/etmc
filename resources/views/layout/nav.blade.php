@@ -132,7 +132,7 @@
         </a>
       </li>
       <li>
-        <a href="">
+        <a href="{{('/members')}}">
           <i class="bi bi-circle"></i><span>Members</span>
         </a>
       </li>

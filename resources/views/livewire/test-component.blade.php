@@ -15,8 +15,8 @@
                 <th>Phone</th>
                 <th>Email</th>
                 <th>Gender</th>
-                <th>Birthdate</th>
-                <th>Marital Status</th>
+                <th>Marital Status</th>    
+                <th>Deacon</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -27,8 +27,8 @@
                     <td>{{ $member->phone }}</td>
                     <td>{{ $member->email }}</td>
                     <td>{{ $member->gender }}</td>
-                    <td>{{ $member->birthdate }}</td>
                     <td>{{ $member->marital_status }}</td>
+                    <td>{{ $member->supervisor->name ?? 'N/L' }}</td>
                     <td>
                         <div class="d-flex gap-1">
                       <button wire:click="openUpdateModal({{ $member->id }})" class="btn btn-sm btn-primary ">

@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Support\Facades\Hash;
 
 class UserForm extends Component
@@ -11,16 +12,19 @@ class UserForm extends Component
     public $name;
     public $email;
     public $phone;
+    public $roleId;
 
     protected $rules = [
-        'name' => 'required|min:3',
-        'email' => 'required|email|unique:users',
-        'phone' => 'required'
+        'name'   => 'required|min:3',
+        'email'  => 'required|email|unique:users',
+        'phone'  => 'required',
+        'roleId' => 'required'
     ];
 
     public function render()
     {
-        return view('livewire.user-form');
+        $roles = Role::all();
+        return view('livewire.user-form', ['roles' => $roles]);
     }
 
     public function addUser()
@@ -31,6 +35,7 @@ class UserForm extends Component
             'name' => $this->name,
             'email' => $this->email,
             'phone' => $this->phone,
+            'role_id' => $this->roleId,
             'password' => Hash::make('default_password')
         ]);
 

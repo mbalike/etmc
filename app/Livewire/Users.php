@@ -50,6 +50,8 @@ class Users extends Component
            $pastors = User::where('role_id','2')->count();
            $deacon = User::where('role_id','3')->count();
            $trustee = User::where('role_id','4')->count();
+           $evangelist = User::where('role_id','5')->count();
+           $musician   =User::where('role_id', '6')->count();
            
 
         return view('livewire.users', [
@@ -60,6 +62,9 @@ class Users extends Component
             'pastor' => $pastors,
             'deacon' => $deacon,
             'trustee' => $trustee,
+            'evangelist' => $evangelist,
+            'musician' => $musician,
+
             
             ]);
     }

@@ -73,8 +73,8 @@
                       <i class="bi bi-people"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>{{$totalMembers}}</h6>
-                      <span class="text-success small pt-1 fw-bold">{{$kidsTotal}}</span> <span class="text-muted small pt-2 ps-1">Children</span>
+                      <h6></h6>
+                      <span class="text-success small pt-1 fw-bold"></span> <span class="text-muted small pt-2 ps-1">Children</span>
 
                     </div>
                   </div>
@@ -109,8 +109,8 @@
                   </div>
 
                     <div class="ps-3">
-                      <h6>{{$males}}</h6>
-                      <span class="text-success small pt-1 fw-bold">{{$kidsMale}}</span> <span class="text-muted small pt-2 ps-1">Boys</span>
+                      <h6></h6>
+                      <span class="text-success small pt-1 fw-bold"></span> <span class="text-muted small pt-2 ps-1">Boys</span>
 
                     </div>
                   </div>
@@ -146,8 +146,8 @@
                   </div>
 
                     <div class="ps-3">
-                      <h6>{{$females}}</h6>
-                      <span class="text-danger small pt-1 fw-bold">{{$kidsFemale}}</span> <span class="text-muted small pt-2 ps-1">Girls</span>
+                      <h6></h6>
+                      <span class="text-danger small pt-1 fw-bold"></span> <span class="text-muted small pt-2 ps-1">Girls</span>
 
                     </div>
                   </div>
@@ -190,27 +190,26 @@
                       </tr>
                     </thead>
                     <tbody>
-                        @foreach($members as $index => $member)
+                        
                       <tr>
-                        <th scope="row"><a href="#">{{ $index +1 }}</a></th>
-                        <td><a href="#" data-bs-toggle="modal" data-bs-target="#memberModal{{$member->id}}">{{$member->fname}} {{$member->lname}}</a></td>
-                        <td>{{$member->phone}}</td>
-                        <td>{{$member->email}}</td>
-                        <td>{{$member->supervisor_fname }} {{$member->supervisor_lname }}</td>
+                        <th scope="row"><a href="#"></a></th>
+                        <td><a href="#" data-bs-toggle="modal" ></a></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                         <td>
                         <div class="d-flex">
-                        <a href="{{route('admin-edit-member',$member->id)}}" class="btn btn-primary me-2">Edit</a>
-                             <form action="{{route('delete-member',$member->id)}}" method="post">
-                                @csrf
-                                @method('DELETE')
+                        <a href="" class="btn btn-primary me-2">Edit</a>
+                             <form action="" method="post">
+                                
                                 <button type="submit" class="btn btn-danger">Delete</button>
                              </form>   
                       
                         </td>
                         </div>
                       </tr>
-                      <x-member-modal :member="$member"/>
-                       @endforeach
+                     
+                      
                       
                     </tbody>
                   </table>
@@ -231,41 +230,41 @@
             <div class="tab-pane fade profile-edit pt-3" id="user-create">
 
               <!-- Create Member Form -->
-              <form action="{{ route('add-member') }}" method="post">
+              <form action="" method="post">
                 @csrf
                   
                 <div class="row mb-3">
     <label for="fname" class="col-md-4 col-lg-3 col-form-label">First Name</label>
     <div class="col-md-8 col-lg-9">
-        <input type="text" name="fname" class="form-control" id="fname" required value="{{ old('fname') }}">
+        <input type="text" name="fname" class="form-control" id="fname" required value="">
     </div>
 </div>
 
 <div class="row mb-3">
     <label for="lname" class="col-md-4 col-lg-3 col-form-label">Last Name</label>
     <div class="col-md-8 col-lg-9">
-        <input type="text" name="lname" class="form-control" id="lname" required value="{{ old('lname') }}">
+        <input type="text" name="lname" class="form-control" id="lname" required value="">
     </div>
 </div>
 
 <div class="row mb-3">
     <label for="email" class="col-md-4 col-lg-3 col-form-label">Email</label>
     <div class="col-md-8 col-lg-9">
-        <input type="email" name="email" class="form-control" id="email" required value="{{ old('email') }}">
+        <input type="email" name="email" class="form-control" id="email" required value="">
     </div>
 </div>
 
 <div class="row mb-3">
     <label for="phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
     <div class="col-md-8 col-lg-9">
-        <input type="text" name="phone" class="form-control" id="phone" required value="{{ old('phone') }}">
+        <input type="text" name="phone" class="form-control" id="phone" required value="">
     </div>
 </div>
 
 <div class="row mb-3">
     <label for="address" class="col-md-4 col-lg-3 col-form-label">Address</label>
     <div class="col-md-8 col-lg-9">
-        <input type="text" name="address" class="form-control" id="address" required value="{{ old('address') }}">
+        <input type="text" name="address" class="form-control" id="address" required value="">
     </div>
 </div>
 
@@ -274,8 +273,8 @@
     <div class="col-md-8 col-lg-9">
         <select name="gender" class="form-select" id="gender" required>
             <option selected disabled value="">Select gender</option>
-            <option value="Male" {{ old('gender') == 'Male' ? 'selected' : '' }}>Male</option>
-            <option value="Female" {{ old('gender') == 'Female' ? 'selected' : '' }}>Female</option>
+            <option value="Male" >Male</option>
+            <option value="Female" >Female</option>
         </select>
     </div>
 </div>
@@ -283,7 +282,7 @@
 <div class="row mb-3">
     <label for="birthdate" class="col-md-4 col-lg-3 col-form-label">Date of Birth</label>
     <div class="col-md-8 col-lg-9">
-        <input type="date" name="birthdate" class="form-control" id="birthdate" min="1940-01-01" required value="{{ old('birthdate') }}">
+        <input type="date" name="birthdate" class="form-control" id="birthdate" min="1940-01-01" required value="">
     </div>
 </div>
 
@@ -291,11 +290,11 @@
     <label class="col-md-4 col-lg-3 col-form-label">Marital Status</label>
     <div class="col-md-8 col-lg-9">
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="marital_status" id="single" value="Single" {{ old('marital_status', 'Single') == 'Single' ? 'checked' : '' }}>
+            <input class="form-check-input" type="radio" name="marital_status" id="single" value="Single" >
             <label class="form-check-label" for="single">Single</label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="marital_status" id="married" value="Married" {{ old('marital_status') == 'Married' ? 'checked' : '' }}>
+            <input class="form-check-input" type="radio" name="marital_status" id="married" value="Married" >
             <label class="form-check-label" for="married">Married</label>
         </div>
     </div>
@@ -306,13 +305,13 @@
     <div class="col-md-8 col-lg-9">
         <select name="spouse_id" class="form-select" id="spouse">
             <option selected disabled>Select Spouse</option>
-            @foreach($spouses as $spouse)
+            
                 
-                    <option value="{{ $spouse->id }}">
-                        {{ $spouse->fname }} {{ $spouse->lname }}
+                    <option value="">
+                        
                     </option>
                 
-            @endforeach
+            
         </select>
     </div>
 </div>
@@ -322,13 +321,13 @@
     <div class="col-md-8 col-lg-9">
         <select name="family_id" class="form-select" id="supervisor">
             <option selected disabled>Select Family</option>
-            @foreach($families as $family)
+            
                 
-                    <option value="{{ $family->id }}">
-                        {{ $family->name }} 
+                    <option value="">
+                        
                     </option>
                 
-            @endforeach
+            
         </select>
     </div>
 </div>
@@ -337,13 +336,11 @@
     <div class="col-md-8 col-lg-9">
         <select name="supervisor_id" class="form-select" id="supervisor">
             <option selected disabled>Select Supervisor</option>
-            @foreach($users as $user)
-                @if($user->member)
-                    <option value="{{ $user->id }}" {{ old('supervisor_id') == $user->id ? 'selected' : '' }}>
-                        {{ $user->member->fname }} {{ $user->member->lname }}
+            
+                    <option value="" >
+                        
                     </option>
-                @endif
-            @endforeach
+               
         </select>
     </div>
 </div>

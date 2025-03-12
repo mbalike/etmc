@@ -177,7 +177,7 @@
 
                               </div>
                               <div class="ps-3">
-                                <h6></h6>
+                                <h6>{{$musician}}</h6>
                                 
           
                               </div>
@@ -214,7 +214,7 @@
 
                               </div>
                               <div class="ps-3">
-                                <h6></h6>
+                                <h6>{{$evangelist}}</h6>
                                
           
                               </div>
@@ -340,7 +340,7 @@
                                 @endforeach
                             </select>
                             @error('roleId') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
-                        </div>
+                    </div>
                     <!-- Add other form fields -->
                 </form>
             </div>

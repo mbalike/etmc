@@ -11,6 +11,10 @@ Route::view('/users', 'users')
      ->middleware(['auth'])
      ->name('users-table');    
 
+Route::view('/members', 'members')
+     ->middleware(['auth'])
+     ->name('members-tables');
+
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');

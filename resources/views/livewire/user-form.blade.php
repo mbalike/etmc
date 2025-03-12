@@ -26,6 +26,18 @@
                        @error('phone') <span class="text-danger"> {{$message}} </span> @enderror
                     </div>
                   </div>
+                  <div class="row mb-3">
+                      <label for="roleId" class="ol-md-4 col-lg-3 col-form-label">Role</label>
+                         <div class="col-md-8 col-lg-9">
+                            <select wire:model="roleId" id="roleId" class=" form-select">
+                                <option value="">Select Role</option>
+                                @foreach($roles as $role)
+                                    <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('roleId') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                         </div>
+                    </div>
 
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary">
