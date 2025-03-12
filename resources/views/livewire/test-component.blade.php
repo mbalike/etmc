@@ -30,12 +30,14 @@
                     <td>{{ $member->birthdate }}</td>
                     <td>{{ $member->marital_status }}</td>
                     <td>
+                        <div class="d-flex gap-1">
                       <button wire:click="openUpdateModal({{ $member->id }})" class="btn btn-sm btn-primary ">
-                          Edit
+                         <i class="bi bi-pencil"></i>
                       </button>
                       <button wire:click="openDeleteModal({{ $member->id }})" class="btn btn-sm btn-danger ">
-                          Delete
+                         <i class="bi bi-trash"></i>
                       </button>
+                        </div>
                     </td>
                 </tr>
             @empty

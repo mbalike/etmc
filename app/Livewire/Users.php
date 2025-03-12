@@ -44,10 +44,24 @@ class Users extends Component
             });
            } 
 
-           $users = $query->paginate(5);
-           $roles = Role::all();
+           $users   = $query->paginate(5);
+           $roles   = Role::all();
+           $total   = User::all()->count();
+           $pastors = User::where('role_id','2')->count();
+           $deacon = User::where('role_id','3')->count();
+           $trustee = User::where('role_id','4')->count();
+           
 
-        return view('livewire.users', ['users' => $users, 'roles' => $roles]);
+        return view('livewire.users', [
+            
+            'users' => $users,
+            'roles' => $roles,
+            'total' => $total,
+            'pastor' => $pastors,
+            'deacon' => $deacon,
+            'trustee' => $trustee,
+            
+            ]);
     }
 
     public $selectedUser = null;
