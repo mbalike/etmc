@@ -5,7 +5,8 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'welcome');
 
 Route::view('/admini', 'admin')
-     ->middleware(['auth']);
+     ->middleware(['auth'])
+     ->name('admini');
 
 Route::view('/users', 'users')
      ->middleware(['auth'])

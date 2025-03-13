@@ -30,7 +30,10 @@ class TestComponent extends Component
     {
 
         $query = Member::query();
-
+        $total = Member::all()->count();
+        $males = Member::where('gender','male')->count();
+        $females = Member::where('gender','female')->count();
+ 
         // More flexible search across multiple columns
         if (!empty($this->search)) {
             $searchTerm = '%' . $this->search . '%';
@@ -45,7 +48,14 @@ class TestComponent extends Component
 
         $members = $query->paginate(5);
 
-                return view('livewire.test-component',['members' => $members]);
+                return view('livewire.test-component',[
+                            
+                    'members' => $members,
+                    'total'   => $total,
+                    'males'   => $males,
+                    'females' => $females,
+                                    
+                                ]);
 
         
     }

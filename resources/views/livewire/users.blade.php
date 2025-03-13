@@ -1,7 +1,3 @@
-
-
-
-
                   <!-- Users Summary and table -->
                   <div class="col-lg-12">
                     <div class="row">

@@ -164,7 +164,7 @@
                 <div class="card-body">
                   <h5 class="card-title">Users <span>| Today</span></h5>
 
-                  <livewire:test-component />
+                    
 
 
                 </div>
@@ -247,7 +247,7 @@
                         
                       <tr>
                         <th scope="row"><a href="#"></a></th>
-                        <td><a href="#" data-bs-toggle="modal" data-bs-target=""</a></td>
+                        <td><a href="#" data-bs-toggle="modal" data-bs-target=""></a></td>
                         <td></td>
                         <td></td>
                         <td></td>
