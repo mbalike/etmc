@@ -71,6 +71,11 @@ public $lastName;
 public $phone;
 public $email;
 public $gender;
+public $birthdate;
+public $marital_status;
+public $family_id;
+public $supervisor_id;
+public $spouse_id;
 
 // Add these methods
 public function openUpdateModal($memberId)
@@ -84,6 +89,12 @@ public function openUpdateModal($memberId)
     $this->phone = $this->selectedMember->phone;
     $this->email = $this->selectedMember->email;
     $this->gender = $this->selectedMember->gender;
+    $this->birthdate = $this->selectedMember->birthdate;
+    $this->marital_status = $this->selectedMember->marital_status;
+    $this->family_id = $this->selectedMember->family_id;
+    $this->supervisor_id = $this->selectedMember->supervisor_id;
+    $this->spouse_id = $this->selectedMember->spouse_id;
+
     
     $this->isUpdateModalOpen = true;
 }
@@ -137,7 +148,7 @@ public $isDeleteModalOpen = false;
 public function openDeleteModal($memberId)
 {
     $this->selectedMember = Member::find($memberId);
-    $this->memberId = $this->selectedMember->id;
+    $this->memberId = $memberId;
     $this->isDeleteModalOpen = true;
 }
 
