@@ -39,10 +39,17 @@
           <div class="tab-pane fade show active profile-overview pt-3" id="user-overview">
               <!-- Change Password Form -->
               <section class="section dashboard">
-                <div class="row"> 
+                <div class="row">
           
+                 
+ 
+          
+          
+         
                   <livewire:teens />
-        
+
+                        
+                  
                 </div>
               </section>
           
@@ -70,7 +77,7 @@
             
 
                
-                <
+                
 
 
                 <div class="text-center">

@@ -40,7 +40,7 @@ class UserForm extends Component
         ]);
 
         // Reset form fields
-        $this->reset(['name', 'email', 'phone','role_id','password']);
+        $this->reset(['name', 'email', 'phone','roleId']);
 
         // Show success message
         session()->flash('message', 'User successfully added.');

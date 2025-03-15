@@ -18,11 +18,22 @@ Route::view('/members', 'members')
 
 Route::view('/teenagers', 'teenagers')
      ->middleware(['auth'])
-     ->name('members-tables');
+     ->name('teens-tables');
+     
+Route::view('/kids', 'kids')
+     ->middleware(['auth'])
+     ->name('teens-tables');
 
 Route::view('/dashboard', 'admin')
     ->middleware(['auth', 'verified'])
     ->name('admini');
+
+Route::get('/logout', function () {
+     Auth::logout();
+     session()->invalidate();
+     session()->regenerateToken();
+     return redirect('/login');
+ })->name('logOut');
 
 Route::view('profile', 'profile')
     ->middleware(['auth'])

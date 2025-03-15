@@ -3,11 +3,11 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use App\Models\Teenager;
+use App\Models\Kid;
 use App\Models\Member;
 use App\Models\User;
 
-class TeensForm extends Component
+class KidsForm extends Component
 {
     public $firstName;
     public $lastName;
@@ -34,7 +34,7 @@ class TeensForm extends Component
         $fathers = Member::where('gender','male')->get();
         $mothers = Member::where('gender','female')->get();
 
-        return view('livewire.teens-form',[
+        return view('livewire.Kids-form',[
 
             'deacons' => $deacons,
             'fathers' => $fathers,
@@ -42,11 +42,11 @@ class TeensForm extends Component
         ]);
     }
 
-    public function addTeen(){
+    public function addKid(){
 
         $this->validate();
         
-         Teenager::create([
+         Kid::create([
             
             'first_name' => $this->firstName,
             'last_name'  => $this->lastName,
@@ -69,6 +69,6 @@ class TeensForm extends Component
              'supervisorId'
         );
 
-        $this->dispatch('teenAdded');
+        $this->dispatch('KidAdded');
     }
 }

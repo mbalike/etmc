@@ -1,4 +1,6 @@
-        <div class="tab-pane fade profile-edit pt-3" id="user-create">
+        <div>
+
+        
            <!-- Profile Edit Form -->
            <form wire:submit.prevent="addUser">
                 @csrf
@@ -49,6 +51,12 @@
                  <div class="alert alert-success mt-3">
                    {{ session('message') }}
                  </div>
+                  <script>
+                     setTimeout(function() {
+                         document.getElementById('alert-message').style.display = 'none';
+                     }, 3000); // 3000 milliseconds = 3 seconds
+                  </script>
                 @endif
               </form><!-- End Create UserForm -->
+       
         </div>
