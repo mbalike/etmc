@@ -7,7 +7,7 @@
                     <label for="Email" class="col-md-4 col-lg-3 col-form-label">Name</label>
                     <div class="col-md-8 col-lg-9">
                       <input wire:model.defer="name" type="text" class="form-control" id="Name" value="">
-                       @error('name') <span class="text danger"> {{$message}} </span> @enderror
+                       @error('name') <span class="text-danger"> {{$message}} </span> @enderror
                     </div>
                   </div>
 

@@ -4,9 +4,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
 
-Route::view('/admini', 'admin')
-     ->middleware(['auth'])
-     ->name('admini');
+// Route::view('/admini', 'admin')
+//      ->middleware(['auth'])
+//      ->name('admini');
 
 Route::view('/users', 'users')
      ->middleware(['auth'])
@@ -16,9 +16,13 @@ Route::view('/members', 'members')
      ->middleware(['auth'])
      ->name('members-tables');
 
-Route::view('dashboard', 'dashboard')
+Route::view('/teenagers', 'teenagers')
+     ->middleware(['auth'])
+     ->name('members-tables');
+
+Route::view('/dashboard', 'admin')
     ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+    ->name('admini');
 
 Route::view('profile', 'profile')
     ->middleware(['auth'])

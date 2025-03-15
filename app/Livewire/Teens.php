@@ -30,9 +30,9 @@ class Teens extends Component
     public function render()
     {
         $query = Teenager::query();
-        $totalTeens = Teenager::all();
-        $maleTeens = Teenager::where(['gender','male']);
-        $femaleTeens = Teenager::where(['gender','female']); 
+        $totalTeens = Teenager::all()->count();
+        $maleTeens = Teenager::where('gender','male')->count();
+        $femaleTeens = Teenager::where('gender','female')->count(); 
 
         if(!empty($this->search)){
 
@@ -46,19 +46,19 @@ class Teens extends Component
             
            });
 
-           $teens = $query->paginate(5);
-
         }
+        $teens = $query->paginate(5);
         
         return view('livewire.teens',[
+            'totalTeens' => $totalTeens,
             'teens'=> $teens,
-            'maleTeens' => $malesTeens,
+            'maleTeens' => $maleTeens,
             'femaleTeens' => $femaleTeens
         ]);
     }
 
     public $selectedTeen = null;
-    public $isupdateModalOpen = false;
+    public $isUpdateModalOpen = false;
 
     public $teenId;
     public $firstName;
@@ -71,16 +71,16 @@ class Teens extends Component
 
     public function openUpdateModal($teenId){
 
-        $this->selectedTeen = Teen::find($teenId);
+        $this->selectedTeen = Teenager::find($teenId);
           
         $this->teenId  = $this->selectedTeen->id;
-        $this->$firstName = $this->selectedTeen->first_name;
-        $this->$lastName = $this->selectedTeen->last_name;
-        $this->$gender = $this->selectedTeen->gender;
-        $this->$birthdate = $this->selectedTeen->birthdate;
-        $this->$fatherId = $this->selectedTeen->father_id;
-        $this->$motherId = $this->selectedTeen->mother_id;
-        $this->$supervisorId = $this->selectedTeen->supervisor_id;
+        $this->firstName = $this->selectedTeen->first_name;
+        $this->lastName = $this->selectedTeen->last_name;
+        $this->gender = $this->selectedTeen->gender;
+        $this->birthdate = $this->selectedTeen->birthdate;
+        $this->fatherId = $this->selectedTeen->father_id;
+        $this->motherId = $this->selectedTeen->mother_id;
+        $this->supervisorId = $this->selectedTeen->supervisor_id;
 
             $this->isUpdateModalOpen = true;
     }
@@ -94,28 +94,28 @@ class Teens extends Component
     public function update(){
 
 
-        $this->valide([
+        $this->validate([
           
           'firstName' => 'required|string|max:255',
           'lastName' => 'required|string|max:255',
-          'gender' => 'required|in:Male,Female',
-          'birthdate' => 'required|string|max:20',
-          'fatherId'  => 'nullable|exists:members,id',
-          'motherId'  => 'nullable|exists:members,id',
-          'supervisorId'  => 'nullable|exists:users,id',
+        //   'gender' => 'required|in:Male,Female',
+        //   'birthdate' => 'required|string|max:20',
+        //   'fatherId'  => 'nullable|exists:members,id',
+        //   'motherId'  => 'nullable|exists:members,id',
+        //   'supervisorId'  => 'nullable|exists:users,id',
         ]);
 
-        $teen = Teen::find($teenId);
+        $teen = Teenager::find($this->teenId);
 
         $teen->update([
 
-            'first_name' => $firstName,
-            'last_name' => $lastName,
-            'gender' => $firstName,
-            'birthdate' => $birthdate,
-            'mother_id' => $fatherId,
-            'mother_id' => $motherId,
-            'mother_id' => $supervisorId,
+            'first_name'=> $this->firstName,
+            'last_name' => $this->lastName,
+            'gender'    => $this->gender,
+            'birthdate' => $this->birthdate,
+            'mother_id' => $this->fatherId,
+            'mother_id' => $this->motherId,
+            'supervisor_id' => $this->supervisorId,
 
         ]);
 
@@ -136,11 +136,11 @@ class Teens extends Component
         $this->supervisorId = '';
     }
 
-    public $isDeleteModalopen = false;
+    public $isDeleteModalOpen = false;
 
     public function openDeleteModal($teenId){
 
-        $this->selectedTeen = Teen::find($teenId);
+        $this->selectedTeen = Teenager::find($teenId);
         $this->teenId = $teenId;
         $this->isDeleteModalOpen = true;
     }
@@ -153,7 +153,7 @@ class Teens extends Component
 
     public function delete(){
 
-        $teen = Teen::find($this->teenId);
+        $teen = Teenager::find($this->teenId);
         $teen->delete();
             
         $this->closeDeleteModal();
