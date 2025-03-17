@@ -159,7 +159,7 @@
                         <tbody wire:poll.20s>
                             @forelse($members as $member)
                                 <tr>
-                                    <td>{{ $member->first_name }} {{ $member->last_name }}</td>
+                                    <td>{{ $member->full_name }} </td>
                                     <td>{{ $member->phone }}</td>
                                     <td>{{ $member->email }}</td>
                                     <td>{{ $member->gender }}</td>

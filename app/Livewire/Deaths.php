@@ -9,7 +9,7 @@ class Deaths extends Component
 {
 
     public $memberId;
-    public $dod;
+    public $date_of_death;
     
     public function render()
     {

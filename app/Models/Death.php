@@ -21,7 +21,7 @@ class Death extends Model
 
     protected $casts = [
 
-        'date_of_death'
+        'date_of_death' => 'date'
     ];
 
     public function member(): BelongsTo
