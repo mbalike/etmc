@@ -67,7 +67,7 @@ class Deaths extends Component
         $this->selectedDeath = Death::find($deathId);
           
         $this->deathId  = $this->selectedDeath->id;
-        $this->fulltName = $this->selectedDeath->member->full_name;
+        $this->fulltName = $this->selectedDeath->full_name;
         $this->deathDate = $this->selectedDeath->deathDate;
         
 

@@ -49,36 +49,7 @@
             <div class="tab-pane fade profile-edit pt-3" id="user-create">
 
              <!-- Member Death Form -->
-             <form action="" method="post">
-                           @csrf
-                           <div class="row mb-3">
-                        <label for="spouse" class="col-md-4 col-lg-3 col-form-label">Deceased</label>
-                        <div class="col-md-8 col-lg-9">
-                            <select name="id"  class="form-select" id="deceased">
-                                <option selected disabled>Select Deceased Member</option>
-                                
-                                    
-                                        <option value="" >
-                                            
-                                        </option>
-                                    
-                                
-                            </select>
-                        </div>
-                    </div>
-                    
-                    <div class="row mb-3">
-                        <label for="birthdate" class="col-md-4 col-lg-3 col-form-label">Date of Death</label>
-                        <div class="col-md-8 col-lg-9">
-                            <input type="date" name="dod" class="form-control" id="birthdate" min="1940-01-01" required value="">
-                        </div>
-                    </div>
-                    
-                   
-                <div class="text-center">
-                <button type="submit" class="btn btn-danger">Record as Deceased</button>
-                </div>
-              </form>
+                      <livewire:death-form>
               <!-- End Member Death Form -->    
                 </div>
     

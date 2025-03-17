@@ -122,7 +122,7 @@ class Users extends Component
         ]);
 
         $this->closeUpdateModal();
-        // $this->dispach('userUpdated');
+        // $this->dispatch('userUpdated');
     }
 
     private function resetForm()

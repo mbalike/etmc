@@ -148,7 +148,7 @@
                         <tbody wire:poll.20s>
                             @forelse($deaths as $death)
                                 <tr>
-                                    <td>{{ $death->member->full_name }}</td>
+                                    <td>{{ $death->full_name ?? ""}}</td>
                                     <td>{{ $death->date_of_death }}</td>
                                     <td>
                                         <div class="d-flex gap-1">
@@ -227,8 +227,8 @@
                 <button type="button" class="btn-close" wire:click="closeDeleteModal"></button>
             </div>
             <div class="modal-body">
-                <p>Are you sure you want to delete this deathager?</p>
-                <p><strong>{{ $selectedDeath->member->full_name }} </strong></p>
+                <p>Are you sure you want to delete this death record?</p>
+                <p><strong>{{ $selectedDeath->full_name ?? ''}} </strong></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" wire:click="closeDeleteModal">Cancel</button>
