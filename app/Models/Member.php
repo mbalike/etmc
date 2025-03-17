@@ -54,6 +54,11 @@ class Member extends Model
         return $this->belongsTo(User::class, 'supervisor_id');
     }
 
+    public function death(): HasOne 
+    {
+        return $this->hasOne(Death::class);
+    }
+
     public function getFullNameAttribute(): string
     {
         return "{$this->first_name} {$this->last_name}";

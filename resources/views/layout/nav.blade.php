@@ -137,7 +137,7 @@
         </a>
       </li>
       <li>
-        <a href="">
+        <a href="{{('/kids')}}">
           <i class="bi bi-circle"></i><span>Kids</span>
         </a>
       </li>

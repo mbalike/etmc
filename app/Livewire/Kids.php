@@ -4,7 +4,7 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\Kid;
+use App\Models\Child;
 
 class Kids extends Component
 {
@@ -29,10 +29,10 @@ class Kids extends Component
 
     public function render()
     {
-        $query = Kid::query();
-        $totalKids = Kid::all()->count();
-        $maleKids = Kid::where('gender','male')->count();
-        $femaleKids = Kid::where('gender','female')->count(); 
+        $query = Child::query();
+        $totalKids = Child::all()->count();
+        $maleKids = Child::where('gender','male')->count();
+        $femaleKids = Child::where('gender','female')->count(); 
 
         if(!empty($this->search)){
 
@@ -51,13 +51,13 @@ class Kids extends Component
         
         return view('livewire.kids',[
             'totalKids' => $totalKids,
-            'Kids'=> $Kids,
+            'kids'=> $Kids,
             'maleKids' => $maleKids,
             'femaleKids' => $femaleKids
         ]);
     }
 
-    public $selectedkid = null;
+    public $selectedKid = null;
     public $isUpdateModalOpen = false;
 
     public $kidId;
@@ -71,16 +71,16 @@ class Kids extends Component
 
     public function openUpdateModal($kidId){
 
-        $this->selectedkid = Kid::find($kidId);
+        $this->selectedKid = Child::find($kidId);
           
-        $this->kidId  = $this->selectedkid->id;
-        $this->firstName = $this->selectedkid->first_name;
-        $this->lastName = $this->selectedkid->last_name;
-        $this->gender = $this->selectedkid->gender;
-        $this->birthdate = $this->selectedkid->birthdate;
-        $this->fatherId = $this->selectedkid->father_id;
-        $this->motherId = $this->selectedkid->mother_id;
-        $this->supervisorId = $this->selectedkid->supervisor_id;
+        $this->kidId  = $this->selectedKid->id;
+        $this->firstName = $this->selectedKid->first_name;
+        $this->lastName = $this->selectedKid->last_name;
+        $this->gender = $this->selectedKid->gender;
+        $this->birthdate = $this->selectedKid->birthdate;
+        $this->fatherId = $this->selectedKid->father_id;
+        $this->motherId = $this->selectedKid->mother_id;
+        $this->supervisorId = $this->selectedKid->supervisor_id;
 
             $this->isUpdateModalOpen = true;
     }
@@ -105,7 +105,7 @@ class Kids extends Component
           'supervisorId'  => 'nullable|exists:users,id',
         ]);
 
-        $kid = Kid::find($this->kidId);
+        $kid = Child::find($this->kidId);
 
         $kid->update([
 
@@ -125,7 +125,7 @@ class Kids extends Component
 
     private function resetForm()
     {
-        $this->selectedkid = null;
+        $this->selectedKid = null;
         $this->kidId = null;
         $this->firstName = '';
         $this->lastName = '';
@@ -140,7 +140,7 @@ class Kids extends Component
 
     public function openDeleteModal($kidId){
 
-        $this->selectedkid = Kid::find($kidId);
+        $this->selectedKid = Child::find($kidId);
         $this->kidId = $kidId;
         $this->isDeleteModalOpen = true;
     }
@@ -153,7 +153,7 @@ class Kids extends Component
 
     public function delete(){
 
-        $kid = Kid::find($this->kidId);
+        $kid = Child::find($this->kidId);
         $kid->delete();
             
         $this->closeDeleteModal();

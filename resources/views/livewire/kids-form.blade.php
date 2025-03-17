@@ -93,6 +93,16 @@
                      <span wire:loading wire:target="addKid">Adding...</span>
                   </button>
                 </div>
+                @if (session()->has('message'))
+                 <div class="alert alert-success mt-3">
+                   {{ session('message') }}
+                 </div>
+                  <script>
+                     setTimeout(function() {
+                         document.getElementById('alert-message').style.display = 'none';
+                     }, 3000); // 3000 milliseconds = 3 seconds
+                  </script>
+                @endif
               </form> 
               <!-- End Create Kid Form -->
 </div>

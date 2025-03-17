@@ -57,7 +57,7 @@
 
             <div class="tab-pane fade profile-edit pt-3" id="user-create">
                
-              <livewire:kids-forms />
+              <livewire:kids-form />
 
             </div>
 

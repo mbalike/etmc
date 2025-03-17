@@ -3,7 +3,7 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use App\Models\Kid;
+use App\Models\Child;
 use App\Models\Member;
 use App\Models\User;
 
@@ -34,7 +34,7 @@ class KidsForm extends Component
         $fathers = Member::where('gender','male')->get();
         $mothers = Member::where('gender','female')->get();
 
-        return view('livewire.Kids-form',[
+        return view('livewire.kids-form',[
 
             'deacons' => $deacons,
             'fathers' => $fathers,
@@ -46,7 +46,7 @@ class KidsForm extends Component
 
         $this->validate();
         
-         Kid::create([
+         Child::create([
             
             'first_name' => $this->firstName,
             'last_name'  => $this->lastName,
@@ -70,5 +70,7 @@ class KidsForm extends Component
         );
 
         $this->dispatch('KidAdded');
+
+        session()->flash('message', 'Child successfully added.');
     }
 }
