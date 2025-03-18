@@ -67,8 +67,8 @@ class Deaths extends Component
         $this->selectedDeath = Death::find($deathId);
           
         $this->deathId  = $this->selectedDeath->id;
-        $this->fulltName = $this->selectedDeath->full_name;
-        $this->deathDate = $this->selectedDeath->deathDate;
+        $this->fullName = $this->selectedDeath->full_name;
+        $this->deathDate = $this->selectedDeath->date_of_death;
         
 
             $this->isUpdateModalOpen = true;
@@ -85,7 +85,8 @@ class Deaths extends Component
 
         $this->validate([
             
-          'deathDate' => 'required|string|max:20',
+          'deathDate' => 'required|date',
+          'fullName'  => 'required|string|max:20'
 
         ]);
 
@@ -93,7 +94,8 @@ class Deaths extends Component
 
         $death->update([
 
-            'deathDate' => $this->deathDate,
+            'date_of_death' => $this->deathDate,
+            'full_name'     => $this->fullName
 
         ]);
 

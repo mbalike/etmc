@@ -199,11 +199,18 @@
             </div>
             <div class="modal-body">
                 <form wire:submit.prevent="update">
+                    
                     <div class="mb-3">
                         <label class="form-label">Date of Death</label>
-                        <input type="text" wire:model="deathDate" class="form-control">
+                        <input type="text" wire:model="fullName" class="form-control">
+                        @error('fullName') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Date of Death</label>
+                        <input type="date" wire:model="deathDate" class="form-control">
                         @error('deathDate') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
+
                     
                     <!-- Add other form fields -->
                 </form>
