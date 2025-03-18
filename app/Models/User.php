@@ -66,4 +66,9 @@ class User extends Authenticatable
         return $this->BelongsTo(Role::class);
     }
 
+    public function baptism(): HasMany
+    {
+        return $this->HasMany(Baptism::class);
+    }
+
 }

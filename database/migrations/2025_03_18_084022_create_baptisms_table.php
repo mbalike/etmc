@@ -13,6 +13,16 @@ return new class extends Migration
     {
         Schema::create('baptisms', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('member_id')->constrained()->onDelete('cascade');
+            $table->string('phone')->nullable();
+            $table->enum('occupation', ['employed', 'unemployed', 'student', 'retired', 'others'])->default('unemployed');
+            $table->text('description')->nullable();
+            $table->date('baptism_date');
+            $table->string('baptised_by');
+            $table->string('testified_by');
+            $table->foreignId('supervisor_id')->constrained('users')->onDelete('cascade');
+            $table->enum('status', ['active', 'inactive'])->default('active');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

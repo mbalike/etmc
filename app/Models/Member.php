@@ -73,4 +73,9 @@ class Member extends Model
     {
         return $this->HasMany(Teenager::class, 'father_id');
     }
+
+    public function baptism(): HasOne
+    {
+        return $this->HasOne(Baptism::class,'member_id');
+    }
 }
