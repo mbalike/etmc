@@ -147,7 +147,7 @@
         </a>
       </li>
       <li>
-        <a href="">
+        <a href="{{('/baptisms')}}">
           <i class="bi bi-circle"></i><span>Baptism</span>
         </a>
       </li>

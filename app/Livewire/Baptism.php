@@ -52,16 +52,16 @@ class Baptism extends Component
                         $query->where('first_name', 'LIKE', $searchTerm)
                             ->orWhere('last_name', 'LIKE', $searchTerm);
                     });
-        $baptisms = $query->paginate(5);
-            });
-        return view('livewire.baptism', [
+                });
+            }
+            $baptisms = $query->paginate(5);
+                return view('livewire.baptism', [
 
-            'totalBaptisms' => $totalBaptisms,
-            'baptisms' => $baptisms,
-            'members' => $members,
-            'deacons' => $users
+                   'totalBaptisms' => $totalBaptisms,
+                   'baptisms' => $baptisms,
+                   'members' => $members,
+                   'deacons' => $users
         ]);
-    }
        }
 
     public $selectedBaptism = null;
@@ -123,9 +123,14 @@ class Baptism extends Component
 
         $this->validate([
 
-            'baptism_date' => 'required|date',
-            'baptised_by' => 'required|string|max:20',
-            'testified_by' => 'required|string|max:20',
+            'memberId' => 'required|exists:members,id',
+            'phone' => 'required|string|max:20',
+            'occupation' => 'required|string|max:20',
+            'description' => 'required|string|max:255',
+            'baptism_date' => 'date',
+            'baptised_by' => 'string|max:20',
+            'testified_by' => 'string|max:20',
+            'supervisor_id' => 'required|exists:users,id',
             'status' => 'required|string|max:20'
 
         ]);
@@ -134,9 +139,14 @@ class Baptism extends Component
 
         $baptism->update([
 
+            'member_id' => $this->memberId,
+            'phone' => $this->phone,
+            'occupation' => $this->occupation,
+            'description' => $this->description,
             'baptism_date' => $this->baptism_date,
             'baptised_by' => $this->baptised_by,
             'testified_by' => $this->testified_by,
+            'supervisor_id' => $this->supervisor_id,
             'status' => $this->status
 
         ]);

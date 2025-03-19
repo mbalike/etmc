@@ -12,7 +12,7 @@ class Baptism extends Model
 {
     use HasFactory, softDeletes;
 
-    protected $fillables = [
+    protected $fillable = [
 
         'member_id',
         'phone',

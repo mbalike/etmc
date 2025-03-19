@@ -23,12 +23,12 @@ class BaptismForm extends Component
     public function render()
     {
         $members = Member::all();
-        $users = User::all();
+        $users = User::where('role_id', '3')->get();
 
         return view('livewire.baptism-form',[
 
             'members' => $members,
-            'users' => $users,
+            'deacons' => $users,
         ]);
     }
 
@@ -54,19 +54,16 @@ class BaptismForm extends Component
 
         BaptismModel::create([
 
-            'baptism_date' => $this->baptism_date,
-            'baptised_by' => $this->baptised_by,
-            'testified_by' => $this->testified_by,
-            'status' => $this->status,
             'member_id' => $this->member_id,
             'phone' => $this->phone,
+            'baptism_date' => $this->baptism_date,
             'occupation' => $this->occupation,
             'description' => $this->description,
+            'baptised_by' => $this->baptised_by,
+            'testified_by' => $this->testified_by,
             'supervisor_id' => $this->supervisor_id,
+            'status' => $this->status,
         ]);
-
-        $member->delete();
-        $user->delete();
 
         $this->dispatch('Baptised Member Recorded');
     }

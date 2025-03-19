@@ -62,7 +62,7 @@
                                 <i class="bi bi-gender-male"></i>
                               </div>
                               <div class="ps-3">
-                                <h6>{{ $maleBaptisms }}</h6>
+                                <h6></h6>
                                 
           
                               </div>
@@ -98,7 +98,7 @@
                                 <i class="bi bi-gender-female"></i>
                               </div>
                               <div class="ps-3">
-                                <h6>{{ $femaleBaptisms }}</h6>
+                                <h6></h6>
                                
           
                               </div>
@@ -151,12 +151,12 @@
                         <tbody wire:poll.20s>
                             @forelse($baptisms as $baptism)
                                 <tr>
-                                    <td>{{ $baptism->member_id}}</td>
+                                    <td>{{ $baptism->member->full_name}}</td>
                                     <td>{{ $baptism->phone }}</td>
                                     <td>{{ $baptism->occupation }}</td>
                                     <td>{{ $baptism->baptism_date }}</td>
-                                    <td>{{ $baptism->supervisor_id}}</td>
-
+                                    <td>{{ $baptism->supervisor->name}}</td>
+                                    <td>
                                         <div class="d-flex gap-1">
                                       <button wire:click="openUpdateModal({{ $baptism->id }})" class="btn btn-sm btn-primary ">
                                          <i class="bi bi-pencil"></i>
