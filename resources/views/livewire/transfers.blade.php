@@ -64,7 +64,7 @@
                   </div>
 
                     <div class="ps-3">
-                      <h6>  </h6>
+                      <h6> {{$totalMales}} </h6>
                       <span class="text-success small pt-1 fw-bold"></span> <span class="text-muted small pt-2 ps-1">Boys</span>
 
                     </div>
@@ -101,7 +101,7 @@
                   </div>
 
                     <div class="ps-3">
-                      <h6></h6>
+                      <h6>{{$totalFemales}}</h6>
                       <span class="text-danger small pt-1 fw-bold"></span> <span class="text-muted small pt-2 ps-1">Girls</span>
 
                     </div>
@@ -151,7 +151,6 @@
                                 <th>Phone</th>
                                 <th>Gender</th>
                                 <th>Reason</th>
-                                <th>Description</th>    
                                 <th>Deacon</th>
                                 <th>Action</th>
                             </tr>
@@ -163,7 +162,6 @@
                                     <td>{{ $transfer->phone }}</td>
                                     <td>{{ $transfer->gender }}</td>
                                     <td>{{ $transfer->reason }}</td>
-                                    <td>{{ $transfer->description }}</td>
                                     <td>{{ $transfer->supervisor->name ?? 'N/L' }}</td>
                                     <td>
                                         <div class="d-flex gap-1">

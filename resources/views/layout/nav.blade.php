@@ -162,7 +162,7 @@
         </a>
       </li>
       <li>
-        <a href="">
+        <a href="{{('/transfers')}}">
           <i class="bi bi-circle"></i><span>Transfers</span>
         </a>
       </li>

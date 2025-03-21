@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Transfer extends Model
@@ -33,7 +34,7 @@ class Transfer extends Model
 
     public function supervisor(): BelongsTo
      {
-        return $this->BelongsTo(User::class);
+        return $this->BelongsTo(User::class,'supervisor_id');
      }
 
 }

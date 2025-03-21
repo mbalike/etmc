@@ -3,9 +3,9 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use\Livewire\WithPagination;
+use Livewire\WithPagination;
 use App\Models\User;
-use App\Models\Members;
+use App\Models\Member;
 use App\Models\Transfer;
 
 
@@ -31,10 +31,12 @@ class Transfers extends Component
 
     public function render()
     {
-        $query   = Transfer::query;
+        $query   = Transfer::query();
         $members = Member::all();
         $totalTransfers = Transfer::all()->count();
-        $deacons  = Users::where('role_id','3')->get();
+        $totalMales = Transfer::where('gender','Male')->count();
+        $totalFemales = Transfer::where('gender','Female')->count();
+        $deacons  = User::where('role_id','3')->get();
 
         if(!empty($this->search)){
 
@@ -54,7 +56,9 @@ class Transfers extends Component
             'transfers' => $transfers,
             'members'   => $members,
             'deacons'   => $deacons,
-            'totalTransfers' => $totalTransfers
+            'totalTransfers' => $totalTransfers,
+            'totalMales' => $totalMales,
+            'totalFemales' => $totalFemales
 
         ]);
     }

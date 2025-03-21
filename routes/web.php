@@ -28,6 +28,10 @@ Route::view('/deaths', 'deaths')
      ->middleware(['auth'])
      ->name('deaths-tables');
 
+Route::view('/transfers', 'transfers')
+     ->middleware(['auth'])
+     ->name('transfers-tables');
+
 Route::view('/baptisms', 'baptism')
      ->middleware(['auth'])
      ->name('baptisms-tables');
