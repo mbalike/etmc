@@ -31,7 +31,7 @@ class Member extends Model
 
     public function spouse(): BelongsTo
     {
-        return $this->belongsTo(Member::class, 'spouse_id');
+        return $this->BelongsTo(Member::class, 'spouse_id');
     }
 
     public function spouseOf(): HasOne
@@ -41,7 +41,7 @@ class Member extends Model
 
     public function family(): BelongsTo
     {
-        return $this->belongsTo(Family::class);
+        return $this->BelongsTo(Family::class);
     }
 
     public function headOfFamily(): HasOne
@@ -51,7 +51,7 @@ class Member extends Model
 
     public function supervisor(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'supervisor_id');
+        return $this->BelongsTo(User::class, 'supervisor_id');
     }
 
     public function death(): HasOne 

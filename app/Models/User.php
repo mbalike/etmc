@@ -61,6 +61,11 @@ class User extends Authenticatable
         return $this->HasMany(Teenager::class, 'supervisor_id');
     }
 
+    public function transferedMember(): HasMany
+    {
+        return $this->HasMany(Transfer::class);
+    }
+
     public function role(): BelongsTo
     {
         return $this->BelongsTo(Role::class);
