@@ -19,9 +19,17 @@ class Transfer extends Model
         'gender',
         'reason',
         'description',
+        'transfer_date',
         'supervisor_id'
 
     ];
+
+    protected $casts = [
+
+        'transfer_date' => 'date'
+    ];
+
+
 
     public function supervisor(): BelongsTo
      {

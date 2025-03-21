@@ -13,7 +13,15 @@ return new class extends Migration
     {
         Schema::create('transfers', function (Blueprint $table) {
             $table->id();
+            $table->string('full_name');
+            $table->string('phone');
+            $table->enum('gender',['male','female']);
+            $table->enum('reason',['marriage','work','education','other']);
+            $table->string('description');
+            $table->date('transfer_date');
+            $table->foreignId('supervisor_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
