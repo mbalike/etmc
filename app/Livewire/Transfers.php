@@ -3,11 +3,59 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use\Livewire\WithPagination;
+use App\Models\User;
+use App\Models\Members;
+use App\Models\Transfer;
+
 
 class Transfers extends Component
 {
+    use WithPagination;
+
+    protected $paginationTheme = 'bootstrap';
+
+    public $search = '';
+
+    public function getListeners(){
+
+        return [
+            'refreshComponent' => '$refresh'
+        ];
+    }
+
+    public function updatingSearch(){
+
+        $this->resetPage();
+    }
+
     public function render()
     {
-        return view('livewire.transfers');
+        $query   = Transfer::query;
+        $members = Member::all();
+        $totalTransfers = Transfer::all()->count();
+        $deacons  = Users::where('role_id','3')->get();
+
+        if(!empty($this->search)){
+
+            $searchTerm = '%' . $this->search . '%';
+            $query->where(function ($q) use ($searchTerm){
+                $q->where('full_name', 'LIKE', $searchTerm)
+                    ->orWhere('phone', 'LIKE', $searchTerm)
+                    ->orWhere('gender', 'LIKE', $searchTerm)
+                    ->orWhere('reason', 'LIKE', $searchTerm)
+                    ->orWhere('tansfer_date', 'LIKE', $searchTerm);
+            });
+        }
+                $transfers = $query->paginate(5);
+
+        return view('livewire.transfers',[
+
+            'transfers' => $transfers,
+            'members'   => $members,
+            'deacons'   => $deacons,
+            'totalTransfers' => $totalTransfers
+
+        ]);
     }
 }
