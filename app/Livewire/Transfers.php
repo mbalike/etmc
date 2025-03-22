@@ -62,4 +62,13 @@ class Transfers extends Component
 
         ]);
     }
+
+    public $transId;
+    public $fullName;
+    public $phone;
+    public $gender;
+    public $reason;
+    public $description;
+    public $transferDate;
+    public $supervisorId;
 }
