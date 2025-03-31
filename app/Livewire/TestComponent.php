@@ -45,9 +45,7 @@ class TestComponent extends Component
     {
 
         $query = Member::query();
-        $total = Member::all()->count();
-        $males = Member::where('gender','male')->count();
-        $females = Member::where('gender','female')->count();
+        
  
         // More flexible search across multiple columns
         if (!empty($this->search)) {
@@ -64,6 +62,10 @@ class TestComponent extends Component
         if (!empty($this->selectedSupervisor)) {
             $query->where('supervisor_id', $this->selectedSupervisor);
         }
+        
+        $total = $query->count();
+        $males = (clone $query)->where('gender', 'male')->count();
+        $females = (clone $query)->where('gender', 'female')->count();
 
         $members = $query->paginate(5);
 
