@@ -5,6 +5,7 @@ namespace App\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Member; 
+use App\Models\User; 
 
 class TestComponent extends Component
 {
@@ -13,6 +14,14 @@ class TestComponent extends Component
     protected $paginationTheme = 'bootstrap';
 
     public $search = '';
+    public $selectedSupervisor = null; 
+    public $supervisors = [];
+
+    public function mount()
+    {
+        // Fetch all supervisors from the Users table
+        $this->supervisors = User::where('role_id', '3')->get(); 
+    }
 
     public function getListeners()
 {
@@ -23,6 +32,12 @@ class TestComponent extends Component
 
     public function updatingSearch()
     {
+        $this->resetPage();
+    }
+
+    public function updateSupervisorFilter($supervisorId)
+    {
+        $this->selectedSupervisor = $supervisorId;
         $this->resetPage();
     }
 
@@ -46,6 +61,10 @@ class TestComponent extends Component
             });
         }
 
+        if (!empty($this->selectedSupervisor)) {
+            $query->where('supervisor_id', $this->selectedSupervisor);
+        }
+
         $members = $query->paginate(5);
 
                 return view('livewire.test-component',[
@@ -54,6 +73,8 @@ class TestComponent extends Component
                     'total'   => $total,
                     'males'   => $males,
                     'females' => $females,
+                    'supervisors' => $this->supervisors,
+                    'selectedSupervisor' => $this->selectedSupervisor,
                                     
                                 ]);
 
