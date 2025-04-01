@@ -8,6 +8,10 @@ Route::view('/dashboard', 'dashboard')
      ->middleware(['auth'])
      ->name('dashboard');
 
+Route::view('/events', 'events')
+     ->middleware(['auth'])
+     ->name('events');
+
 Route::view('/users', 'users')
      ->middleware(['auth'])
      ->name('users-table');    
