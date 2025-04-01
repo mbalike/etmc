@@ -210,9 +210,16 @@
                 </div>
                     
                 </div>
+                
                 <div class="d-flex justify-content-center">
+                  
                         {{ $members->links('livewire.custom-pagination') }}
                 </div>
+                <p class="text-muted">
+             Showing {{ $members->firstItem() }} - {{ $members->lastItem() }}
+              of {{ $members->total() }} entries
+                </p>
+
                  <!-- Update Modal -->
 @if($isUpdateModalOpen)
 <div class="modal fade show" tabindex="-1" style="display: block; background-color: rgba(0,0,0,0.5);">
