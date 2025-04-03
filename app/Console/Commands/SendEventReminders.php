@@ -15,9 +15,8 @@ class SendEventReminders extends Command
      *
      * @var string
      */
-    protected $signature = 'app:send-event-reminders';
+    protected $signature = 'events:send-reminders';
     
-    private SmsService $SmsService;
 
     /**
      * The console command description.
@@ -29,6 +28,15 @@ class SendEventReminders extends Command
     /**
      * Execute the console command.
      */
+    protected SmsService $smsService; 
+
+    public function __construct(SmsService $smsService)
+    {
+        parent::__construct();
+        $this->smsService = $smsService;
+    }
+
+
     public function handle()
     {
         $now = Carbon::now();
