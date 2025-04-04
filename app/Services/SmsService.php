@@ -1,7 +1,8 @@
 <?php
 namespace App\Services;
 
-use AfricaStalking\SDK\AfricasTalking;
+
+use Africastalking\SDK\AfricasTalking;
 use Illuminate\Support\Facades\Log;
 
 class SmsService
