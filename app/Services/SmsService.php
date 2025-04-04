@@ -2,7 +2,7 @@
 namespace App\Services;
 
 
-use Africastalking\SDK\AfricasTalking;
+use AfricasTalking\SDK\AfricasTalking;
 use Illuminate\Support\Facades\Log;
 
 class SmsService
