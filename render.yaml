@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: laravel-app
+    env: docker
+    dockerfilePath: ./Dockerfile
+    dockerCommand: php artisan serve --host=0.0.0.0 --port=8000
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_KEY
+        generateValue: true
+      - key: APP_DEBUG
+        value: false
+      - key: LOG_CHANNEL
+        value: errorlog
+      - key: DB_CONNECTION
+        value: mysql
+      - key: DB_HOST
+        value: sql301.infinityfree.com
+      - key: DB_PORT
+        value: 3306
+      - key: DB_DATABASE
+        value: if0_38354399_etmc
+      - key: DB_USERNAME
+        value: if0_38354399
+      - key: DB_PASSWORD
+        value: yKZyBsTkjQQ
