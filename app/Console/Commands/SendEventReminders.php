@@ -63,9 +63,10 @@ class SendEventReminders extends Command
         }
 
         $recipients = $query->pluck('phone')->toArray();
+        // $jina = $query->pluck('last_name')->toArray();
 
         if (!empty($recipients)) {
-            $this->smsService->sendSms($recipients, "Reminder: {$event->title} on {$event->event_date} at {$event->event_time}.");
+            $this->smsService->sendSms($recipients, "Mungu akubariki Ndugu/Dada unakumbushwa : {$event->title} tarehe {$event->event_date} saa {$event->event_time}, {$event->location}.");
         }
     }
 }
