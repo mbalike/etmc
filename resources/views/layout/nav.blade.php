@@ -4,7 +4,7 @@
 <ul class="sidebar-nav" id="sidebar-nav">
 
   <li class="nav-item">
-    <a class="nav-link " href="{{('/dashboard')}}">
+    <a class="nav-link " href="#" wire:click.prevent="$emit('changeView','members')">
       <i class="bi bi-grid"></i>
       <span>Dashboard</span>
     </a>
