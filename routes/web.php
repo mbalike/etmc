@@ -2,15 +2,19 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'welcome');
+// Route::view('/', 'welcome');
 
-Route::view('/dashboard', 'dashboard')
+Route::view('/', 'dashboard')
      ->middleware(['auth'])
      ->name('dashboard');
 
-Route::view('/main','main')
+Route::view('/maini','livewire.layout')
      ->middleware(['auth'])
      ->name('main');
+     
+Route::view('/main','main')
+     ->middleware(['auth'])
+     ->name('maini');
 
 Route::view('/events', 'events')
      ->middleware(['auth'])
