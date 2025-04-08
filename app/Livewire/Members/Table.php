@@ -62,6 +62,12 @@ class Table extends Component
         if (!empty($this->selectedSupervisor)) {
             $query->where('supervisor_id', $this->selectedSupervisor);
         }
+
+        if (auth()->check() && auth()->user()->role_id == 3){
+
+            $query->where('supervisor_id', auth()->id());
+
+        }
         
         $total = $query->count();
         $males = (clone $query)->where('gender', 'male')->count();

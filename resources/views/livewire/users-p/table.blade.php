@@ -30,7 +30,7 @@
         
             
                           <div class="card-body">
-                  <h5 class="card-title">Users <span>| Today</span></h5>
+                  <h5 class="card-title">Users <span></span></h5>
 
                   <div class="container mt-4">
                     <div class="input-group mb-3">

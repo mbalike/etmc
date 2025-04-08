@@ -15,7 +15,7 @@
                     </div>
                     <div class="ps-3">
                       <h6>{{ $total }}</h6>
-                      <span class="text-success small pt-1 fw-bold">..</span> <span class="text-muted small pt-2 ps-1">..</span>
+                      <span class="text-success small pt-1 fw-bold"></span> <span class="text-muted small pt-2 ps-1"></span>
 
                     </div>
                   </div>
@@ -35,11 +35,11 @@
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-house-heart"></i>
+                      <i class="bi bi-balloon"></i>
                     </div>
                     <div class="ps-3">
                       <h6>{{$children}}</h6>
-                      <span class="text-success small pt-1 fw-bold">..</span> <span class="text-muted small pt-2 ps-1">..</span>
+                      <span class="text-success small pt-1 fw-bold"></span> <span class="text-muted small pt-2 ps-1"></span>
 
                     </div>
                   </div>
@@ -64,7 +64,7 @@
                     </div>
                     <div class="ps-3">
                       <h6>{{$baptisms}}</h6>
-                      <span class="text-danger small pt-1 fw-bold">..</span> <span class="text-muted small pt-2 ps-1">..</span>
+                      <span class="text-danger small pt-1 fw-bold"></span> <span class="text-muted small pt-2 ps-1"></span>
 
                     </div>
                   </div>
@@ -85,11 +85,11 @@
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-heart"></i>
+                      <i class="bi bi-person-plus"></i>
                     </div>
                     <div class="ps-3">
                       <h6>{{$users}}</h6>
-                      <span class="text-danger small pt-1 fw-bold"></span> ..<span class="text-muted small pt-2 ps-1">..</span>
+                      <span class="text-danger small pt-1 fw-bold"></span> <span class="text-muted small pt-2 ps-1"></span>
 
                     </div>
                   </div>

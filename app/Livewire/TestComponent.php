@@ -62,6 +62,11 @@ class TestComponent extends Component
         if (!empty($this->selectedSupervisor)) {
             $query->where('supervisor_id', $this->selectedSupervisor);
         }
+
+        if (auth()->check() && auth()->user()->role_id == 3) {
+            $query->where('supervisor_id', auth()->id());
+        }
+        
         
         $total = $query->count();
         $males = (clone $query)->where('gender', 'male')->count();
@@ -112,7 +117,7 @@ public function openUpdateModal($memberId)
     $this->phone = $this->selectedMember->phone;
     $this->email = $this->selectedMember->email;
     $this->gender = $this->selectedMember->gender;
-    $this->birthdate = $this->selectedMember->birthdate;
+    $this->birthdate = $this->selectedMember->birthdate ? date('Y-m-d', strtotime($this->selectedMember->birthdate)) : null;
     $this->marital_status = $this->selectedMember->marital_status;
     $this->family_id = $this->selectedMember->family_id;
     $this->supervisor_id = $this->selectedMember->supervisor_id;

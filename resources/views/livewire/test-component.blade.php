@@ -117,7 +117,7 @@
             <!-- Members Table -->
             <div class="col-12">
               <div class="card recent-sales overflow-auto">
-
+             @if(Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
               <div class="filter">
         <a class="icon" href="#" data-bs-toggle="dropdown">
             <i class="bi bi-three-dots"></i>
@@ -148,7 +148,7 @@
             @endforeach
         </ul>
     </div>
-        
+        @endif
             
                           <div class="card-body">
                   <h5 class="card-title">Members <span>| Today</span></h5>
@@ -171,7 +171,9 @@
                                 <th>Gender</th>
                                 <th>Marital Status</th>    
                                 <th>Deacon</th>
+                                @if (in_array(Auth::user()->role_id, [1, 2]))
                                 <th>Action</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody wire:poll.20s>
@@ -183,6 +185,7 @@
                                     <td>{{ $member->gender }}</td>
                                     <td>{{ $member->marital_status }}</td>
                                     <td>{{ $member->supervisor->name ?? 'N/L' }}</td>
+                                    @if (in_array(Auth::user()->role_id, [1, 2]))
                                     <td>
                                         <div class="d-flex gap-1">
                                       <button wire:click="openUpdateModal({{ $member->id }})" class="btn btn-sm btn-primary ">
@@ -193,6 +196,7 @@
                                       </button>
                                         </div>
                                     </td>
+                                    @endif
                                 </tr>
                             @empty
                                 <tr>
@@ -241,6 +245,31 @@
                         <input type="text" wire:model="lastName" class="form-control">
                         @error('lastName') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" wire:model="email" class="form-control">
+                        @error('email') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Phone</label>
+                        <input type="phone" wire:model="phone" class="form-control">
+                        @error('phone') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Gender</label>
+                        <select wire:model="gender" class="form-select">
+                           <option value="">Select Gender</option>
+                           <option value="Male">Male</option>
+                           <option value="Female">Female</option>
+                        </select>
+                        @error('gender') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Birthdate</label>
+                        <input type="text" wire:model="birthdate" class="form-control">
+                        @error('birthdate') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+
                     <!-- Add other form fields -->
                 </form>
             </div>

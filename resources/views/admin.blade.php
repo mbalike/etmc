@@ -26,8 +26,9 @@
 
              
             <!-- Users Table-->
-
+            @if (in_array(Auth::user()->role_id, [1, 2]))
               @livewire('users-p.table')
+              @endif
 
             <!-- End Users Table -->
             <!-- Edit User Modal -->
