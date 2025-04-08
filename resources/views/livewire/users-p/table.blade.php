@@ -14,9 +14,9 @@
                 <h6>Filter by Supervisor</h6>
             </li>
             
-            <!-- Option to show all members (reset supervisor filter) -->
+            <!-- Option to show all users (reset supervisor filter) -->
             <li>
-                <a class="dropdown-item {{ is_null($selectedSupervisor) ? 'active' : '' }}" 
+                <a class="dropdown-item " 
                    href="#" 
                    wire:click.prevent="updateSupervisorFilter(null)">
                     All Supervisors
@@ -24,27 +24,19 @@
             </li>
             
             <!-- List all supervisors -->
-            @foreach($supervisors as $supervisor)
-                <li>
-                    <a class="dropdown-item {{ $selectedSupervisor == $supervisor->id ? 'active' : '' }}" 
-                       href="#" 
-                       wire:click.prevent="updateSupervisorFilter('{{ $supervisor->id }}')">
-                        {{ $supervisor->name }} 
-                    </a>
-                </li>
-            @endforeach
+           
         </ul>
     </div>
         
             
                           <div class="card-body">
-                  <h5 class="card-title">Members <span>| Today</span></h5>
+                  <h5 class="card-title">Users <span>| Today</span></h5>
 
                   <div class="container mt-4">
                     <div class="input-group mb-3">
                        
                         
-                        <input type="text" wire:model.live.debounce.500ms="search" placeholder="Search Members...">
+                        <input type="text" wire:model.live.debounce.500ms="search" placeholder="Search Users...">
                         
                     </div>
                     
@@ -55,27 +47,27 @@
                                 <th>Name</th>
                                 <th>Phone</th>
                                 
-                                <th>Gender</th>
-                                 
-                                <th>Deacon</th>
+                                <th>Role</th>
+                                  
+                                
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody wire:poll.20s>
-                            @forelse($members as $member)
+                            @forelse($users as $user)
                                 <tr>
-                                    <td>{{ $member->full_name }} </td>
-                                    <td>{{ $member->phone }}</td>
+                                    <td>{{ $user->name }} </td>
+                                    <td>{{ $user->phone }}</td>
                                     
-                                    <td>{{ $member->gender }}</td>
+                                    <td>{{ $user->role->name }}</td>
                                     
-                                    <td>{{ $member->supervisor->name ?? 'N/L' }}</td>
+
                                     <td>
                                         <div class="d-flex gap-1">
-                                      <button wire:click="openUpdateModal({{ $member->id }})" class="btn btn-sm btn-primary ">
+                                      <button wire:click="openUpdateModal({{ $user->id }})" class="btn btn-sm btn-primary ">
                                          <i class="bi bi-pencil"></i>
                                       </button>
-                                      <button wire:click="openDeleteModal({{ $member->id }})" class="btn btn-sm btn-danger ">
+                                      <button wire:click="openDeleteModal({{ $user->id }})" class="btn btn-sm btn-danger ">
                                          <i class="bi bi-trash"></i>
                                       </button>
                                         </div>
@@ -83,7 +75,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="4" class="text-center">No members found.</td>
+                                    <td colspan="4" class="text-center">No users found.</td>
                                 </tr>
                             @endforelse
                         </tbody>
@@ -100,11 +92,11 @@
                 
                 <div class="d-flex justify-content-center">
                   
-                        {{ $members->links('livewire.custom-pagination') }}
+                        {{ $users->links('livewire.custom-pagination') }}
                 </div>
                 <p class="text-muted">
-             Showing {{ $members->firstItem() }} - {{ $members->lastItem() }}
-              of {{ $members->total() }} entries
+             Showing {{ $users->firstItem() }} - {{ $users->lastItem() }}
+              of {{ $users->total() }} entries
                 </p>
 
                  <!-- Update Modal -->

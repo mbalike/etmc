@@ -1,7 +1,4 @@
-<div>
-     <!-- Left side columns -->
-     <div class="col-lg-8">
-          <div class="row">
+<div class="row">
 
             <!-- Members Card -->
             <div class="col-xxl-3 col-md-6">
@@ -34,14 +31,14 @@
                
 
                 <div class="card-body">
-                  <h5 class="card-title">Families</h5>
+                  <h5 class="card-title">Children</h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                       <i class="bi bi-house-heart"></i>
                     </div>
                     <div class="ps-3">
-                      <h6></h6>
+                      <h6>{{$children}}</h6>
                       <span class="text-success small pt-1 fw-bold">..</span> <span class="text-muted small pt-2 ps-1">..</span>
 
                     </div>
@@ -66,7 +63,7 @@
                       <i class="bi bi-droplet"></i>
                     </div>
                     <div class="ps-3">
-                      <h6></h6>
+                      <h6>{{$baptisms}}</h6>
                       <span class="text-danger small pt-1 fw-bold">..</span> <span class="text-muted small pt-2 ps-1">..</span>
 
                     </div>
@@ -84,14 +81,14 @@
               
 
                 <div class="card-body">
-                  <h5 class="card-title">Marriages</h5>
+                  <h5 class="card-title">Users</h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                       <i class="bi bi-heart"></i>
                     </div>
                     <div class="ps-3">
-                      <h6></h6>
+                      <h6>{{$users}}</h6>
                       <span class="text-danger small pt-1 fw-bold"></span> ..<span class="text-muted small pt-2 ps-1">..</span>
 
                     </div>
@@ -102,4 +99,3 @@
 
             </div><!-- End Customers Card -->
 
-</div>
