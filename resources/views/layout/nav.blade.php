@@ -54,7 +54,7 @@
         </a>
       </li>
       <li>
-        <a href="">
+        <a href="{{('/marriages')}}">
           <i class="bi bi-circle"></i><span>Marriages</span>
         </a>
       </li>

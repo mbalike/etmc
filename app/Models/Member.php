@@ -78,4 +78,13 @@ class Member extends Model
     {
         return $this->HasOne(Baptism::class,'member_id');
     }
+
+    public function marriageAsHusband(): HasOne
+    {
+        return $this->hasOne(Marriage::class, 'husband_id');
+    }
+    public function marriageAsWife(): HasOne
+    {
+        return $this->hasOne(Marriage::class, 'wife_id');
+    }
 }

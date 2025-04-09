@@ -18,7 +18,8 @@ class Marriage extends Model
 
         'husband_id',
         'wife_id',
-        'date'
+        'wed_by',
+        'marriage_date'
     ];
 
     protected $casts = [
@@ -26,8 +27,15 @@ class Marriage extends Model
         'date'
     ];
 
-    public function member() : HasMany
+    public function husband() : BelongsTo
        {
-        return $this->hasMany(Member::class);
-       }    
+         return $this->BelongsTo(User::class,'husband_id');
+       } 
+       
+    public function wife() : BelongsTo
+       {
+         return $this->BelongsTo(User::class,'wife_id');
+       }
+
+    
 }

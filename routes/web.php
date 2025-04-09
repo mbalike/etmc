@@ -35,6 +35,9 @@ Route::view('/teenagers', 'teenagers')
 Route::view('/kids', 'kids')
      ->middleware(['auth'])
      ->name('teens-tables');
+Route::view('/marriages', 'marriages')
+     ->middleware(['auth'])
+     ->name('marriages-tables');
 
 Route::view('/deaths', 'deaths')
      ->middleware(['auth'])
