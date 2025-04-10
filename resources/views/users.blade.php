@@ -29,32 +29,43 @@
             <li class="nav-item">
               <button class="nav-link" data-bs-toggle="tab" data-bs-target="#user-create">Create User</button>
             </li>
+            <li class="nav-item">
+              <button class="nav-link" data-bs-toggle="tab" data-bs-target="#user-reports">Reports</button>
+            </li>
 
           </ul>
           <div class="tab-content pt-2">
 
           <div class="tab-pane fade show active profile-overview pt-3" id="user-overview">
-              <!-- Change Password Form -->
-              <section class="section dashboard">
-                <div class="row">
+              
                 
           
               <livewire:users />
           
-              </div>
-                </div>
-              </section>
+              
+                
           
             </div>
 
             
             <div class="tab-pane fade profile-edit pt-3" id="user-create">
+                <section class="section dashboard">
+                  <div class="row">
 
              <livewire:user-form />
+                      
+                    </div>
+                     </section>
+                   </div>
+            <div class="tab-pane fade user-reports pt-3" id="user-reports">
             
-
-            <div class="tab-pane fade pt-3" id="user-edit">
-
+                
+                <livewire:church-staff-report />
+              
+          
+  
+              </div>
+          
               
                            
 
