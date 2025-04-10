@@ -61,6 +61,8 @@
             
                 
                 <livewire:church-staff-report />
+
+                <livewire:annual-report />
               
           
   
